@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     public void LoseLife()
     {
+        if(lifes == 0){ return; }
         lifes--;
         lifeUI[lifes].SetActive(false);
     }

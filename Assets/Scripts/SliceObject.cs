@@ -1,6 +1,7 @@
 using UnityEngine;
 using EzySlice;
 using UnityEngine.InputSystem;
+using Unity.Mathematics;
 
 public class SliceObject : MonoBehaviour
 {
@@ -10,14 +11,8 @@ public class SliceObject : MonoBehaviour
     public Material crossSectionMaterial;
     public float cutForce = 2000;
     public LayerMask sliceableLayer;
+    private GameObject sliceParticles;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, sliceableLayer);
@@ -43,8 +38,15 @@ public class SliceObject : MonoBehaviour
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
 
+            // Destroy main fruit
             Destroy(target);
 
+            // Juice particles
+            sliceParticles = target.GetComponent<SliceableObject>().sliceEffect;
+            GameObject juice = Instantiate(sliceParticles, upperHull.transform.position, Quaternion.identity);
+            Destroy(juice, 2f);
+
+            // Destroy sliced fruit after 2 sec
             Destroy(upperHull, 2f);
             Destroy(lowerHull, 2f);
         }

@@ -1,22 +1,14 @@
 using UnityEngine;
 
-public class FruitBehaviour : MonoBehaviour
+public class FruitBehaviour : SliceableObject
 {
-    private GameManager gm;
-
-    void Start()
+    protected override void OnMissed()
     {
-        gm = FindFirstObjectByType<GameManager>();
+        gm.LoseLife();
     }
-
-    void OnCollisionEnter(Collision collision)
+    
+    public override void IsSliced()
     {
-        if (collision.gameObject.CompareTag("fruitKillZone"))
-        {
-            gm.LoseLife();
-            Destroy(gameObject);
-        }
+        gm.score++; // ajout score;
     }
-
-    // If sliced : gm.score++
 }
