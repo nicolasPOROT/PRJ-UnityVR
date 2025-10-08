@@ -13,7 +13,7 @@ public class FruitBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("fruitKillZone"))
         {
-            gm.lifes--;
+            gm.LoseLife();
             Destroy(gameObject);
         }
     }

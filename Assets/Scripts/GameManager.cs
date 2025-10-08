@@ -5,9 +5,17 @@ public class GameManager : MonoBehaviour
     // Iterables
     public int lifes = 3;
     public int score = 0;
+    public GameObject[] lifeUI;
 
     // Canons
     [SerializeField] private CanonShoot[] canons;
+
+    private void Start()
+    {
+        foreach (GameObject life in lifeUI){
+            life.SetActive(true);
+        }
+    }
 
     void Update()
     {
@@ -23,6 +31,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoseLife()
+    {
+        lifes--;
+        lifeUI[lifes].SetActive(false);
+    }
     private void UpdateUi()
     {
         // Update lifes and score shown somewhere in the scene

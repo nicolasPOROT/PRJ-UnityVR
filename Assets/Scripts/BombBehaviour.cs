@@ -17,5 +17,8 @@ public class BombBehaviour : MonoBehaviour
         }
     }
 
-    // If sliced : lifes--
+    public void IsSliced()
+    {
+        gm.LoseLife();
+    }
 }

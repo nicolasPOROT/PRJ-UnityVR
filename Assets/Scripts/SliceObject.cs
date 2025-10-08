@@ -44,6 +44,9 @@ public class SliceObject : MonoBehaviour
             SetupSlicedComponent(lowerHull);
 
             Destroy(target);
+
+            Destroy(upperHull, 2f);
+            Destroy(lowerHull, 2f);
         }
     }
 
