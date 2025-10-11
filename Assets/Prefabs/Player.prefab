@@ -351,7 +351,7 @@ Transform:
   m_GameObject: {fileID: 3040681254398980797}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.627, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -709,7 +709,7 @@ MonoBehaviour:
   startSlicePoint: {fileID: 7870352113604018948}
   endSlicePoint: {fileID: 1354456295428426605}
   velocityEstimator: {fileID: 1156274583366146049}
-  crossSectionMaterial: {fileID: 2100000, guid: ce8e6ce9ea1c2634295e8318975375cf, type: 2}
+  crossSectionMaterial: {fileID: 2100000, guid: 0031a5780a124334dad810dd81255b58, type: 2}
   cutForce: 2000
   sliceableLayer:
     serializedVersion: 2
@@ -851,7 +851,7 @@ MonoBehaviour:
   startSlicePoint: {fileID: 5175098130283592158}
   endSlicePoint: {fileID: 1483270194247938215}
   velocityEstimator: {fileID: 6764873721779228259}
-  crossSectionMaterial: {fileID: 2100000, guid: ce8e6ce9ea1c2634295e8318975375cf, type: 2}
+  crossSectionMaterial: {fileID: 2100000, guid: 0031a5780a124334dad810dd81255b58, type: 2}
   cutForce: 2000
   sliceableLayer:
     serializedVersion: 2

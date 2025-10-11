@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9103415556502438543}
   - component: {fileID: 9104640316832947644}
   - component: {fileID: 7251784372698097366}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bomb 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,4 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafd5aac57a19d44a944baee5419169d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliceEffect: {fileID: 2312393614409040804, guid: 1d32e2b34b3213a4b823120348d3c823, type: 3}
+  sliceEffect: {fileID: 8738173072865485684, guid: 2a2c334646cbed24bb9f621ece35c743, type: 3}

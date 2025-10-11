@@ -156,8 +156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPos: {fileID: 2982690728065253533}
+  bombProb: 0.2
   fruits:
   - {fileID: 4517074633875663036, guid: 91bb87ba73f041a48aa034a969119026, type: 3}
   - {fileID: 8763990230846708773, guid: 828e284ef166fcb4abda6ee2acc62096, type: 3}
   - {fileID: 3541818702196639844, guid: 260e9f39b0527244e92b77a3f1ec4339, type: 3}
-  bomb: {fileID: 3028489567575923778, guid: ab8acb17a8e547143872375950c6c621, type: 3}
+  bombs:
+  - {fileID: 8805158052044046266, guid: ff865e2c2e892da46a9e882949917d5b, type: 3}
+  - {fileID: 1291478745912796826, guid: a49cdb1cd56474247b64ca67d60e0214, type: 3}
