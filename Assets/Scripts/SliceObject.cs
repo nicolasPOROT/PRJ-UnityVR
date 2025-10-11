@@ -11,7 +11,6 @@ public class SliceObject : MonoBehaviour
     public Material crossSectionMaterial;
     public float cutForce = 2000;
     public LayerMask sliceableLayer;
-    private GameObject sliceParticles;
 
     void FixedUpdate()
     {
@@ -38,15 +37,21 @@ public class SliceObject : MonoBehaviour
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
             SetupSlicedComponent(lowerHull);
 
+
+            // Slice logic
+            SliceableObject sliceableObject = target.GetComponent<SliceableObject>();
+
+            sliceableObject.IsSliced();
+
+            // Juice particles
+            GameObject sliceFx = sliceableObject.sliceEffect;
+            GameObject juice = Instantiate(sliceFx, upperHull.transform.position, Quaternion.identity);
+            Destroy(juice, 2f);
+
             // Destroy main fruit
             Destroy(target);
 
-            // Juice particles
-            sliceParticles = target.GetComponent<SliceableObject>().sliceEffect;
-            GameObject juice = Instantiate(sliceParticles, upperHull.transform.position, Quaternion.identity);
-            Destroy(juice, 2f);
-
-            // Destroy sliced fruit after 2 sec
+            // Destroy sliced parts after 2 sec
             Destroy(upperHull, 2f);
             Destroy(lowerHull, 2f);
         }

@@ -9,6 +9,6 @@ public class FruitBehaviour : SliceableObject
     
     public override void IsSliced()
     {
-        gm.score++; // ajout score;
+        gm.GainScore();
     }
 }
