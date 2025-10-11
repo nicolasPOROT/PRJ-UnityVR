@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Over");
         }
 
-
+        // Pour tester
         if (Input.GetKeyDown(KeyCode.Space))
         {
             canons[Random.Range(0, canons.Length)].Shoot();
@@ -36,9 +36,5 @@ public class GameManager : MonoBehaviour
         if(lifes == 0){ return; }
         lifes--;
         lifeUI[lifes].SetActive(false);
-    }
-    private void UpdateUi()
-    {
-        // Update lifes and score shown somewhere in the scene
     }
 }

@@ -5,9 +5,9 @@ public class CanonShoot : MonoBehaviour
 {
     public Transform shootPos;
     private float shootForce = 10f;
-    private float bombProb = 0.2f; // Probability of bomb spawn
-    [SerializeField] private GameObject fruit;
-    [SerializeField] private GameObject bomb;
+    [SerializeField] private float bombProb = 0.2f; // Probability of bomb spawn
+    [SerializeField] private GameObject[] fruits;
+    [SerializeField] private GameObject[] bombs;
 
 
     public void Shoot()
@@ -23,13 +23,15 @@ public class CanonShoot : MonoBehaviour
         float randomZ = Random.Range(0f, 360f);
         Quaternion randomRotation = Quaternion.Euler(randomX, randomY, randomZ);
 
-        if (randomFloat <= bombProb)
+        if (randomFloat <= bombProb) // Shoot Random Bomb with probability
         {
-            projectile = Instantiate(bomb, shootPos.position, randomRotation);
+            int randomBomb = Random.Range(0, bombs.Length);
+            projectile = Instantiate(bombs[randomBomb], shootPos.position, randomRotation);
         }
-        else
+        else // Shoot Random Fruit
         {
-            projectile = Instantiate(fruit, shootPos.position, randomRotation);
+            int randomFruit = Random.Range(0, fruits.Length);
+            projectile = Instantiate(fruits[randomFruit], shootPos.position, randomRotation);
         }
 
         projectile.GetComponent<Rigidbody>().AddForce(shootPos.up * shootForce, ForceMode.Impulse);
