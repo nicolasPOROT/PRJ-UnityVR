@@ -6,20 +6,20 @@ public class CononsManager : MonoBehaviour
     // Canons
     [SerializeField] private CanonShoot[] canons;
 
-    private int _difficulty = 0;
+    private int difficulty = 0;
 
     private float timer;
     private float timeToShoot;
-
-
-    void Awake()
-    {
-        _difficulty = GetComponent<GameManager>().difficulty;
-    }
     
     void Start()
     {
-        if (_difficulty == 4) // faster shooting speed for extreme difficulty
+        if (DifficultyTransfert.Instance != null)
+        {
+            // Comme dans GameManager
+            difficulty = DifficultyTransfert.Instance.difficultyLevel;
+        }
+
+        if (difficulty == 4) // faster shooting speed for extreme difficulty
         {
             timeToShoot = 0.7f;
         }
@@ -46,7 +46,7 @@ public class CononsManager : MonoBehaviour
 
     private void RandomCanonShoot()
     {
-        if (_difficulty == 0 || _difficulty == 2) // One fruit at the time for difficulties 0 and 2
+        if (difficulty == 0 || difficulty == 2) // One fruit at the time for difficulties 0 and 2
         {
             canons[Random.Range(0, canons.Length)].Shoot();
         }

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,10 +19,16 @@ public class GameManager : MonoBehaviour
     private int scoreToAdd;
 
     // Difficulty ( 0 -> 4 )
-    public int difficulty = 0;
+    public int difficulty;
 
     private void Start()
     {
+        if (DifficultyTransfert.Instance != null)
+        {
+            // Transférer la valeur stockée dans la variable locale 'difficulty'
+            difficulty = DifficultyTransfert.Instance.difficultyLevel;
+        }
+
         lifes = lifeUI.Length;
 
         foreach (GameObject life in lifeUI)
@@ -39,6 +46,7 @@ public class GameManager : MonoBehaviour
         if (lifes <= 0)
         {
             Debug.Log("Game Over");
+            SceneManager.LoadScene("MainMenu");
         }
 
         ManageCombo();
