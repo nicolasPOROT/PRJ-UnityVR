@@ -12,13 +12,13 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreUi;
 
     // Combo logic
-    [SerializeField] private float comboEndTime = 1f;
-    [SerializeField] private float comboTimer;
-    [SerializeField] private bool inCombo;
-    [SerializeField] private int scoreToAdd;
+    private float comboEndTime = 0.8f;
+    private float comboTimer;
+    private bool inCombo;
+    private int scoreToAdd;
 
-    // Canons
-    [SerializeField] private CanonShoot[] canons;
+    // Difficulty ( 0 -> 4 )
+    public int difficulty = 0;
 
     private void Start()
     {
@@ -34,17 +34,11 @@ public class GameManager : MonoBehaviour
         comboTimer = comboEndTime;
     }
 
-    void Update()
+    private void Update()
     {
         if (lifes <= 0)
         {
             Debug.Log("Game Over");
-        }
-
-        // Pour tester
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            canons[Random.Range(0, canons.Length)].Shoot();
         }
 
         ManageCombo();
@@ -55,6 +49,15 @@ public class GameManager : MonoBehaviour
         if (lifes == 0) { return; }
         lifes--;
         lifeUI[lifes].SetActive(false);
+    }
+
+    // On difficulty 0 and 1, missing a fruit doesn't lose a life
+    public void FruitFall()
+    {
+        if (difficulty >= 2)
+        {
+            LoseLife();
+        }
     }
 
     public void GainScore()

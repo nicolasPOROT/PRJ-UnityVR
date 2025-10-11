@@ -4,7 +4,7 @@ public class FruitBehaviour : SliceableObject
 {
     protected override void OnMissed()
     {
-        gm.LoseLife();
+        gm.FruitFall();
     }
     
     public override void IsSliced()
