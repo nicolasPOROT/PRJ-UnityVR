@@ -1,7 +1,5 @@
 using UnityEngine;
 using EzySlice;
-using UnityEngine.InputSystem;
-using Unity.Mathematics;
 
 public class SliceObject : MonoBehaviour
 {
@@ -11,7 +9,6 @@ public class SliceObject : MonoBehaviour
     public Material crossSectionMaterial;
     public float cutForce = 2000;
     public LayerMask sliceableLayer;
-
     void FixedUpdate()
     {
         bool hasHit = Physics.Linecast(startSlicePoint.position, endSlicePoint.position, out RaycastHit hit, sliceableLayer);

@@ -4,6 +4,7 @@ public abstract class SliceableObject : MonoBehaviour
 {
     protected GameManager gm;
     public GameObject sliceEffect;
+    public AudioClip sliceAudioClip;
 
     protected virtual void Start()
     {

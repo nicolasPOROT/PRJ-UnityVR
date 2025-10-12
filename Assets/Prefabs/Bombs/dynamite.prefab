@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliceEffect: {fileID: 8738173072865485684, guid: 2a2c334646cbed24bb9f621ece35c743, type: 3}
+  sliceAudioClip: {fileID: 8300000, guid: d36d830373337e9428ed88e5e09c9e6d, type: 3}

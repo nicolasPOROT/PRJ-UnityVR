@@ -9,6 +9,7 @@ public class FruitBehaviour : SliceableObject
     
     public override void IsSliced()
     {
+        AudioSource.PlayClipAtPoint(sliceAudioClip, transform.position); 
         gm.GainScore();
     }
 }
