@@ -21,11 +21,11 @@ public class CononsManager : MonoBehaviour
 
         if (difficulty == 4) // faster shooting speed for extreme difficulty
         {
-            timeToShoot = 0.7f;
+            timeToShoot = 0.85f;
         }
         else
         {
-            timeToShoot = 1f;
+            timeToShoot = 1.2f;
         }
         
         timer = timeToShoot;
