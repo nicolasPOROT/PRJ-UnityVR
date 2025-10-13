@@ -131,6 +131,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.756
       objectReference: {fileID: 0}
+    - target: {fileID: 2448403608099816022, guid: 62c37e0d1a7eae54f9323f5b4e178ac0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448403608099816022, guid: 62c37e0d1a7eae54f9323f5b4e178ac0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9396927
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448403608099816022, guid: 62c37e0d1a7eae54f9323f5b4e178ac0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.3420201
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448403608099816022, guid: 62c37e0d1a7eae54f9323f5b4e178ac0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448403608099816022, guid: 62c37e0d1a7eae54f9323f5b4e178ac0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448403608099816022, guid: 62c37e0d1a7eae54f9323f5b4e178ac0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3743769571818824622, guid: 62c37e0d1a7eae54f9323f5b4e178ac0, type: 3}
       propertyPath: m_Name
       value: Player
@@ -342,6 +366,14 @@ PrefabInstance:
       propertyPath: 'canons.Array.data[8]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8327823020945188563, guid: debe9b2c0f043654196372029a4b77b3, type: 3}
+      propertyPath: canons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327823020945188563, guid: debe9b2c0f043654196372029a4b77b3, type: 3}
+      propertyPath: 'canons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1710912239}
     - target: {fileID: 9134520727299652011, guid: debe9b2c0f043654196372029a4b77b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
