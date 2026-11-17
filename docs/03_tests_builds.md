@@ -4,13 +4,15 @@ Statuts : OK / KO / **NON TESTÉ**. Premier test logique Play Mode le 17 novembr
 
 ## Éditeur — référence de non-régression
 
+Complément après A–G : test à vitesse injectée de SliceObject/EzySlice réussi ; affichage final et boutons Rejouer/Menu invoqués via leurs UnityEvents, réinitialisation score/vies et conservation difficulté réussies. Slider volume à 37 %, retour au menu avec volume conservé puis restauration de la valeur précédente : OK. Activation et mise à jour du FPS : OK. Ces tests logiques ne valident ni pointage par contrôleur ni perception visuelle/haptique au casque. Audit final avant builds : deux scènes et 17 prefabs sans Missing ; compilation réussie.
+
 | Test | Statut | Résultat / preuve à compléter |
 |---|---|---|
-| MainMenu : cinq difficultés et lancement | NON TESTÉ | Lancement par MainSceneManager.Play vérifié ; sélection physique des cinq difficultés non testée |
+| MainMenu : cinq difficultés et lancement | OK | Les cinq SelectDif.IsSliced invoqués : valeur 0–4 correctement reçue, spawn observé dans chaque mode ; sélection physique non testée |
 | PlayScene : fruits et bombes lancés | OK | Objets FruitBehaviour et BombBehaviour observés après lancement naturel |
 | Coupe EzySlice, jus et explosion | NON TESTÉ | Coupe EzySlice d'un fruit avec vitesse synthétique réussie après D ; rendu jus/explosion et geste physique restent à confirmer |
 | Score simple et combos | OK | Appel FruitBehaviour.IsSliced : +1 ; deux GainScore : +4 après délai de combo |
-| Vies, fruits manqués selon difficulté | NON TESTÉ | Facile : FruitFall préserve les vies, BombBehaviour.IsSliced retire une vie ; autres difficultés à tester |
+| Vies, fruits manqués selon difficulté | OK | Parcours des cinq modes : fruit manqué coûte 0 vie en 0–1, 1 vie en 2–4 ; bombe retire une vie dans le smoke test |
 | Retour au menu à zéro vie | OK | LoseLife jusqu'à zéro puis transition MainMenu observée |
 | Absence de Missing / erreurs console | OK | Audit éditeur des 2 scènes et 12 prefabs : aucun Missing détecté ; aucune erreur, 2 warnings historiques d'import du modèle sword.001 |
 

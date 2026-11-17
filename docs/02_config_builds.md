@@ -45,6 +45,10 @@ Qualités héritées conservées : Windows utilise PC/PC_RPAsset (render scale 1
 
 Le dossier généré BurstDebugInformation_DoNotShip Windows est conservé séparément dans `Builds/Windows_Symbols` et exclu du ZIP/livrable joueur. Aucun symbole n'est supprimé.
 
+Le processeur de build Pipeline confirme dans la console que ses assemblies et réglages runtime sont exclus du player Windows (build Release, Pipeline Runtime non inclus). Aucun serveur Pipeline n'est ajouté au jeu livré.
+
+Premier essai APK interrompu : le dialogue natif Unity « Unsupported Input Handling » détecte `Both` (valeur 2), non pris en charge sur Android. Choix No, build annulé ; passage par l'éditeur à **Input System Package (New)** uniquement (valeur 1). Le rig et les UI utilisés s'appuient déjà sur Input System. Cet échec de configuration est distingué des résultats du build final ; les messages sont consignés avant nettoyage de la console.
+
 ## Production et livraison à réaliser
 
 1. Lire console, vérifier Missing dans MainMenu/PlayScene et prefabs, compiler et effectuer le parcours de non-régression avant chaque build.

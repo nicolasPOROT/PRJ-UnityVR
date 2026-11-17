@@ -1,0 +1,11 @@
+if (EditorApplication.isPlaying) throw new InvalidOperationException("Hors Play uniquement.");
+var settings = Resources.FindObjectsOfTypeAll<PlayerSettings>().FirstOrDefault();
+if (!settings) throw new InvalidOperationException("PlayerSettings introuvable.");
+var data = new SerializedObject(settings);
+var handler = data.FindProperty("activeInputHandler");
+if (handler == null) throw new InvalidOperationException("Active Input Handling introuvable.");
+int previous = handler.intValue;
+handler.intValue = 1;
+data.ApplyModifiedPropertiesWithoutUndo();
+AssetDatabase.SaveAssets();
+return new { previous, current = handler.intValue, mode = "Input System Package (New)" };
