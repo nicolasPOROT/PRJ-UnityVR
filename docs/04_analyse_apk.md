@@ -1,6 +1,6 @@
 # Analyse APK et comparaison des tailles
 
-**Analyse NON RÉALISÉE : aucun APK final disponible à ce stade.**
+**Analyse Android Studio NON RÉALISÉE.** Un APK final est disponible ; son contenu ZIP a été mesuré automatiquement, voir `07_contenu_apk.md`. Cette lecture ne remplace pas APK Analyzer ni les captures demandées.
 
 ## Procédure APK Analyzer
 
@@ -50,3 +50,17 @@ Après les builds, consulter le rapport de l'éditeur et/ou l'Editor.log (`%LOCA
 - Réduire le coût des effets Quest via leurs variantes, puis mesurer réellement la fluidité.
 
 Aucune optimisation ci-dessus n'est appliquée. Taille, qualité et fluidité ne peuvent être comparées avant builds et tests sur casque.
+
+Attention aux dépendances effectivement utilisées : `Assets/Samples/XR Interaction Toolkit/3.2.1/XR Interaction Simulator/XRI Default Input Actions.inputactions` est référencé par le suivi et les nouvelles interactions UI du Player. Supprimer Samples en bloc casserait ces références. Toute extraction de cet asset doit passer par l'éditeur, conserver son GUID et être validée avant retrait d'exemples.
+
+## Premier constat mesuré — Build Report Windows
+
+Le build Windows réussi (0 erreur/0 warning) indique 30 424 071 octets de textures packées, 3 665 432 de modèles, 1 907 084 de shaders et 64 376 d'audio dans les PackedAssetInfo. Catégories calculées par extension du chemin source : ce n'est pas la taille compressée du ZIP ni le total du player. Voir `build_report_windows.json`.
+
+Les six faces de skybox **Epic_BlueSunset** dominent les entrées les plus lourdes, environ 4 Mio chacune. Contrairement aux gros fichiers source non utilisés relevés dans l'audit, ces six textures sont réellement incluses. Recommandation après validation : comparer leur réduction de résolution et leur compression Android, avec contrôle visuel. Des ressources TextMesh Pro Examples sont également présentes dans le rapport ; examiner les dépendances/Resources avant toute suppression. Aucune optimisation appliquée.
+
+## Mesures de l'APK final
+
+Fichier APK : **57 851 307 octets, 55,17 Mo**. Lecture ZIP : données Unity 26,57 Mo compressés / 55,04 Mo décompressés ; libil2cpp.so 15,37 / 61,65 Mo ; libunity.so 9,07 / 20,61 Mo ; classes.dex 2,25 / 6,16 Mo ; resources.arsc 0,24 / 0,24 Mo. Hash SHA256 et dix plus grosses entrées dans `07_contenu_apk.md`.
+
+Le Build Report Android annonce 821 114 124 octets pour son ensemble de fichiers, qui inclut notamment des sources C++ générées d'Il2CppBackup et des bibliothèques intermédiaires sous Library. **Ce total n'est pas la taille de l'APK.** Les comparaisons de livrables utilisent les fichiers réellement livrés, mesurés par Compare-BuildSizes.

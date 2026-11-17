@@ -1,0 +1,183 @@
+﻿{
+    "platform":  "Android",
+    "result":  "Succeeded",
+    "output":  "D:/GitHub/PRJ-UnityVR/Builds/Android_Quest/FruitNinjaVR_Quest.apk",
+    "bytes":  821114124,
+    "errors":  0,
+    "warnings":  2,
+    "started":  "2026-11-17T16:34:36.0981158",
+    "timestampKind":  "Unspecified",
+    "duration":  "00:17:06.5238824",
+    "unity":  "6000.0.58f1",
+    "categories":  [
+                       {
+                           "category":  "Textures",
+                           "packedBytes":  29384620
+                       },
+                       {
+                           "category":  "Autres",
+                           "packedBytes":  5540515
+                       },
+                       {
+                           "category":  "Modeles",
+                           "packedBytes":  3665404
+                       },
+                       {
+                           "category":  "Shaders",
+                           "packedBytes":  3118392
+                       },
+                       {
+                           "category":  "Audio",
+                           "packedBytes":  64376
+                       },
+                       {
+                           "category":  "Materiaux",
+                           "packedBytes":  49516
+                       }
+                   ],
+    "largest":  [
+                    {
+                        "path":  "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_3_Right-X.png",
+                        "packedBytes":  4194448
+                    },
+                    {
+                        "path":  "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_0_Front+Z.png",
+                        "packedBytes":  4194448
+                    },
+                    {
+                        "path":  "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_5_Down-Y.png",
+                        "packedBytes":  4194444
+                    },
+                    {
+                        "path":  "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_2_Left+X.png",
+                        "packedBytes":  4194444
+                    },
+                    {
+                        "path":  "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_4_Up+Y.png",
+                        "packedBytes":  4194444
+                    },
+                    {
+                        "path":  "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_1_Back-Z.png",
+                        "packedBytes":  4194444
+                    },
+                    {
+                        "path":  "Built-in Texture2D: Splash Screen Unity Logo",
+                        "packedBytes":  1250840
+                    },
+                    {
+                        "path":  "Assets/TextMesh Pro/Resources/Fonts \u0026 Materials/LiberationSans SDF.asset",
+                        "packedBytes":  1078464
+                    },
+                    {
+                        "path":  "Assets/TextMesh Pro/Examples \u0026 Extras/Resources/Fonts \u0026 Materials/Unity SDF.asset",
+                        "packedBytes":  1053192
+                    },
+                    {
+                        "path":  "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/UberPost.shader",
+                        "packedBytes":  749324
+                    },
+                    {
+                        "path":  "Resources/unity_builtin_extra",
+                        "packedBytes":  573656
+                    },
+                    {
+                        "path":  "Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader",
+                        "packedBytes":  466540
+                    },
+                    {
+                        "path":  "Assets/TextMesh Pro/Fonts/LiberationSans.ttf",
+                        "packedBytes":  352734
+                    },
+                    {
+                        "path":  "Assets/TextMesh Pro/Examples \u0026 Extras/Sprites/Default Sprites.png",
+                        "packedBytes":  349680
+                    },
+                    {
+                        "path":  "Packages/com.unity.render-pipelines.universal/Textures/SMAA/AreaTex.tga",
+                        "packedBytes":  268920
+                    },
+                    {
+                        "path":  "Packages/com.unity.render-pipelines.universal/Textures/FilmGrain/Medium01.png",
+                        "packedBytes":  262264
+                    },
+                    {
+                        "path":  "Packages/com.unity.render-pipelines.universal/Textures/FilmGrain/Medium05.png",
+                        "packedBytes":  262264
+                    },
+                    {
+                        "path":  "Packages/com.unity.render-pipelines.universal/Textures/FilmGrain/Large02.png",
+                        "packedBytes":  262264
+                    },
+                    {
+                        "path":  "Packages/com.unity.render-pipelines.universal/Textures/FilmGrain/Thin01.png",
+                        "packedBytes":  262264
+                    },
+                    {
+                        "path":  "Packages/com.unity.render-pipelines.universal/Textures/FilmGrain/Medium03.png",
+                        "packedBytes":  262264
+                    }
+                ],
+    "largestOutputFiles":  [
+                               {
+                                   "path":  "D:/GitHub/PRJ-UnityVR/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/jniLibs/arm64-v8a/libil2cpp.so",
+                                   "size":  64641456,
+                                   "role":  "so"
+                               },
+                               {
+                                   "path":  "D:/GitHub/PRJ-UnityVR/Builds/Android_Quest/FruitNinjaVR_Quest.apk",
+                                   "size":  57851307,
+                                   "role":  "APK"
+                               },
+                               {
+                                   "path":  "D:/GitHub/PRJ-UnityVR/Library/Bee/Android/Prj/IL2CPP/Il2CppBackup/il2cppOutput/Il2CppGenericMethodPointerTable.c",
+                                   "size":  24888040,
+                                   "role":  "c"
+                               },
+                               {
+                                   "path":  "D:/GitHub/PRJ-UnityVR/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/jniLibs/arm64-v8a/libunity.so",
+                                   "size":  21612800,
+                                   "role":  "so"
+                               },
+                               {
+                                   "path":  "D:/GitHub/PRJ-UnityVR/Library/Bee/Android/Prj/IL2CPP/Il2CppBackup/il2cppOutput/Il2CppInvokerTable.cpp",
+                                   "size":  19681320,
+                                   "role":  "cpp"
+                               },
+                               {
+                                   "path":  "D:/GitHub/PRJ-UnityVR/Library/Bee/Android/Prj/IL2CPP/Il2CppBackup/il2cppOutput/Il2CppTypeDefinitions.c",
+                                   "size":  13683291,
+                                   "role":  "c"
+                               },
+                               {
+                                   "path":  "D:/GitHub/PRJ-UnityVR/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/assets/bin/Data/Managed/Metadata/global-metadata.dat",
+                                   "size":  9869788,
+                                   "role":  "dat"
+                               },
+                               {
+                                   "path":  "D:/GitHub/PRJ-UnityVR/Library/Bee/Android/Prj/IL2CPP/Il2CppBackup/il2cppOutput/Il2CppGenericInstDefinitions.c",
+                                   "size":  5839869,
+                                   "role":  "c"
+                               },
+                               {
+                                   "path":  "D:/GitHub/PRJ-UnityVR/Library/Bee/Android/Prj/IL2CPP/Il2CppBackup/il2cppOutput/Il2CppGenericAdjustorThunkTable.c",
+                                   "size":  5225526,
+                                   "role":  "c"
+                               },
+                               {
+                                   "path":  "D:/GitHub/PRJ-UnityVR/Library/Bee/Android/Prj/IL2CPP/Il2CppBackup/il2cppOutput/Il2CppMetadataUsage.c",
+                                   "size":  4916984,
+                                   "role":  "c"
+                               }
+                           ],
+    "messages":  [
+                     {
+                         "type":  "Warning",
+                         "content":  "Using the Screen Space Ambient Occlusion render feature results in significant performance overhead when the application is running natively on device. Disabling or removing that render feature is recommended."
+                     },
+                     {
+                         "type":  "Warning",
+                         "content":  "[Optional] Latency Optimization is recommended to be set to \u003cb\u003ePrioritize Input Polling\u003c/b\u003e when Meta Quest support is enabled."
+                     }
+                 ],
+    "note":  "Categories par extension source dans PackedAssetInfo ; poids packe Unity, pas taille compressee APK. Le total du rapport inclut des fichiers intermediaires C++/natifs et symboles hors APK : comparer les livrables reels avec Compare-BuildSizes.ps1."
+}

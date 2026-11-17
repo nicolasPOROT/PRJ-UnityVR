@@ -1,0 +1,174 @@
+{
+  "platform": "StandaloneWindows64",
+  "result": "Succeeded",
+  "output": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/FruitNinjaVR_PCVR.exe",
+  "bytes": 139566307,
+  "errors": 0,
+  "warnings": 0,
+  "started": "2026-11-17T16:58:47.9609566",
+  "timestampKind": "Unspecified",
+  "duration": "00:01:37.2307984",
+  "unity": "6000.0.58f1",
+  "categories": [
+    {
+      "category": "Textures",
+      "packedBytes": 30424071
+    },
+    {
+      "category": "Autres",
+      "packedBytes": 7084411
+    },
+    {
+      "category": "Modeles",
+      "packedBytes": 3665432
+    },
+    {
+      "category": "Shaders",
+      "packedBytes": 1907084
+    },
+    {
+      "category": "Audio",
+      "packedBytes": 64376
+    },
+    {
+      "category": "Materiaux",
+      "packedBytes": 49516
+    }
+  ],
+  "largest": [
+    {
+      "path": "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_3_Right-X.png",
+      "packedBytes": 4194476
+    },
+    {
+      "path": "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_0_Front+Z.png",
+      "packedBytes": 4194476
+    },
+    {
+      "path": "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_5_Down-Y.png",
+      "packedBytes": 4194472
+    },
+    {
+      "path": "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_2_Left+X.png",
+      "packedBytes": 4194472
+    },
+    {
+      "path": "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_4_Up+Y.png",
+      "packedBytes": 4194472
+    },
+    {
+      "path": "Assets/ThirdParty/Imported_assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_1_Back-Z.png",
+      "packedBytes": 4194472
+    },
+    {
+      "path": "Built-in Texture2D: Splash Screen Unity Logo",
+      "packedBytes": 2796408
+    },
+    {
+      "path": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+      "packedBytes": 1078492
+    },
+    {
+      "path": "Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Unity SDF.asset",
+      "packedBytes": 1053216
+    },
+    {
+      "path": "Resources/unity_builtin_extra",
+      "packedBytes": 571716
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+      "packedBytes": 547500
+    },
+    {
+      "path": "Assets/TextMesh Pro/Fonts/LiberationSans.ttf",
+      "packedBytes": 352734
+    },
+    {
+      "path": "Assets/TextMesh Pro/Examples & Extras/Sprites/Default Sprites.png",
+      "packedBytes": 349704
+    },
+    {
+      "path": "Assets/TextMesh Pro/Examples & Extras/Sprites/DropCap Numbers.psd",
+      "packedBytes": 349704
+    },
+    {
+      "path": "Assets/TextMesh Pro/Sprites/EmojiOne.png",
+      "packedBytes": 349696
+    },
+    {
+      "path": "Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader",
+      "packedBytes": 288896
+    },
+    {
+      "path": "Packages/com.unity.render-pipelines.universal/Textures/SMAA/AreaTex.tga",
+      "packedBytes": 268952
+    },
+    {
+      "path": "Assets/Sprites/heart.png",
+      "packedBytes": 264300
+    },
+    {
+      "path": "Packages/com.unity.render-pipelines.universal/Textures/FilmGrain/Medium01.png",
+      "packedBytes": 262296
+    },
+    {
+      "path": "Packages/com.unity.render-pipelines.universal/Textures/FilmGrain/Medium05.png",
+      "packedBytes": 262296
+    }
+  ],
+  "largestOutputFiles": [
+    {
+      "path": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/UnityPlayer.dll",
+      "size": 33724328,
+      "role": "dll"
+    },
+    {
+      "path": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/FruitNinjaVR_PCVR_Data/sharedassets0.assets.resS",
+      "size": 26786144,
+      "role": "resS"
+    },
+    {
+      "path": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
+      "size": 7830952,
+      "role": "dll"
+    },
+    {
+      "path": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/FruitNinjaVR_PCVR_Data/globalgamemanagers.assets.resS",
+      "size": 6174944,
+      "role": "resS"
+    },
+    {
+      "path": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/D3D12/D3D12Core.dll",
+      "size": 5908408,
+      "role": "dll"
+    },
+    {
+      "path": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/FruitNinjaVR_PCVR_Data/Resources/unity default resources",
+      "size": 5858500,
+      "role": "unity default resources"
+    },
+    {
+      "path": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/FruitNinjaVR_PCVR_Data/Managed/mscorlib.dll",
+      "size": 4632064,
+      "role": "dll"
+    },
+    {
+      "path": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/FruitNinjaVR_PCVR_Data/sharedassets1.assets",
+      "size": 3164836,
+      "role": "assets"
+    },
+    {
+      "path": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/FruitNinjaVR_PCVR_Data/Managed/System.Xml.dll",
+      "size": 3160064,
+      "role": "dll"
+    },
+    {
+      "path": "D:/GitHub/PRJ-UnityVR/Builds/Windows_PCVR/FruitNinjaVR_PCVR_Data/Managed/System.dll",
+      "size": 2641920,
+      "role": "dll"
+    }
+  ],
+  "messages": [],
+  "note": "Categories calculees par extension source a partir des PackedAssetInfo ; poids packe Unity, pas taille compressee dans APK. summary.totalSize peut inclure des fichiers intermediaires C++/natifs et symboles hors APK : comparer les livrables reels avec Compare-BuildSizes.ps1."
+}
