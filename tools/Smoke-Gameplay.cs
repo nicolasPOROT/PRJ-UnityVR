@@ -3,6 +3,14 @@
 if (!EditorApplication.isPlaying) throw new InvalidOperationException("Play Mode requis.");
 var menu = Object.FindFirstObjectByType<MainSceneManager>();
 if (!menu) throw new InvalidOperationException("Démarrer depuis MainMenu.");
+var volumeMenu = Object.FindFirstObjectByType<VolumeMenu>();
+float originalVolume = AudioListener.volume;
+bool volumeApplied = false;
+if (volumeMenu)
+{
+    volumeMenu.GetComponentInChildren<UnityEngine.UI.Slider>().value = 0.37f;
+    volumeApplied = Mathf.Approximately(AudioListener.volume, 0.37f);
+}
 DifficultyTransfert.Instance.difficultyLevel = 0;
 menu.Play();
 await Wait.Until(() => UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "PlayScene");
@@ -72,6 +80,14 @@ if (gameOver)
     gameOver.GetComponentsInChildren<UnityEngine.UI.Button>(true).Single(b => b.name == "MenuButton").onClick.Invoke();
 }
 await Wait.Until(() => UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MainMenu");
+bool volumePersisted = false;
+if (volumeApplied)
+{
+    int frame = Time.frameCount;
+    await Wait.Until(() => Time.frameCount > frame + 2);
+    volumePersisted = Mathf.Approximately(AudioListener.volume, 0.37f);
+    Object.FindFirstObjectByType<VolumeMenu>().GetComponentInChildren<UnityEngine.UI.Slider>().value = originalVolume;
+}
 return new { syntheticEzySlice = successfulCuts == 1, simpleScore = afterSimple - beforeScore, comboScore = afterCombo - afterSimple,
-    initialLives, easyMissPreservesLives, bombCostsLife, spawnedFruits, endScreen, replayReset, returnedToMenu = true,
+    initialLives, easyMissPreservesLives, bombCostsLife, spawnedFruits, endScreen, replayReset, volumeApplied, volumePersisted, returnedToMenu = true,
     limitation = "Coupe EzySlice avec vitesse injectée ; geste physique, tracking et casque non testés." };
