@@ -1,108 +1,25 @@
-# Fruit Ninja VR
+# Fruit Ninja VR — Part 1
 
-### Projet Unity VR – Majeure T2IA 2025/2026  
-**Auteurs :** Fabio Malta, Nicolas Porot, Matéo Biaut, Benjamin Joannard  
-**Technologies utilisées :** Unity 6, C#, EzySlice, XR Interaction Toolkit, Blender  
+Mini-projet ST2VAAS 2026–2027. Membres à confirmer : Fabio Malta, Nicolas Porot, Matéo Biaut, Benjamin Joannard.
 
----
+Unity **6000.0.58f1** (migration en cours de validation), URP 17.0.4, XR Interaction Toolkit 3.2.1, OpenXR 1.15.1, XR Management 4.5.2 et EzySlice. Ouvrir `Assets/Scenes/MainMenu.unity`. Scènes de build : MainMenu (0), PlayScene (1) ; TestScene exclue.
 
-## Objectif du projet
-Développer un mini-jeu en réalité virtuelle inspiré de *Fruit Ninja*, dans lequel le joueur doit trancher des fruits projetés en l’air à l’aide de sabres virtuels.  
-L’expérience est conçue pour fonctionner sur Meta Quest via OpenXR avec le XR Interaction Toolkit.
+Dépôt actuellement configuré : [nicolasPOROT/PRJ-UnityVR](https://github.com/nicolasPOROT/PRJ-UnityVR). Branche de travail : `Mini-projet-Ben`. Sauvegarde initiale : tag `s7-initial`. Confirmer l'URL du dépôt rendu avant livraison.
 
----
+Les sabres suivent les contrôleurs ; la coupe se fait par mouvement du sabre, sans gâchette requise dans la logique héritée. Le menu choisit la difficulté en tranchant un fruit. Les interactions UI par rayon/gâchette sont à vérifier dans l'éditeur et sur casque ; elles ne sont pas validées par l'audit. Score, combos et vies sont hérités de S7. Classement et sauvegarde JSON ne sont pas implémentés dans les scripts examinés.
 
-## Inspirations
-- Le célèbre jeu *Fruit Ninja* 🥷  
-- Une volonté de recréer une expérience immersive et intuitive en VR  
+Pour lancer en PCVR : ouvrir avec la version Unity indiquée, attendre la compilation, sélectionner un runtime OpenXR compatible et connecter le casque (Quest Link/Air Link si Quest). Vérifier Project Validation, ouvrir MainMenu puis Play, ou lancer l'exécutable du dossier Windows complet une fois le build produit. Voir [configuration des builds](docs/02_config_builds.md).
 
----
+Pour Quest autonome : les modules Android/SDK/NDK/OpenJDK de 6000.0.58f1 sont installés. La configuration OpenXR Android et les variantes d'effets restent à compléter. Après production de l'APK, activer le mode développeur, autoriser le débogage USB, puis exécuter :
 
+```powershell
+adb devices
+adb install -r "Builds/Android_Quest/FruitNinjaVR_Quest.apk"
+adb logcat -s Unity
+```
 
-## Fonctionnement général
-1. Le joueur tient deux sabres VR (droite et gauche).  
-2. Les canons projettent aléatoirement des fruits et bombes.  
-3. Le joueur tranche les fruits pour marquer des points.  
-4. Trancher une bombe retire une vie.  
-5. Après trois bombes ➜ “Game Over”.  
-6. Le score et les vies sont mis à jour en temps réel dans l’UI.  
+Lancer ensuite l'application sur le casque, sans rendu PCVR. Aucun APK ni test autonome n'est encore déclaré disponible. Les procédures et limites sont dans [A_FAIRE_MANUELLEMENT.md](docs/A_FAIRE_MANUELLEMENT.md), les résultats dans [03_tests_builds.md](docs/03_tests_builds.md).
 
----
+Les builds vont dans `Builds/`, les livrables dans `Livrable/`, tous deux hors Git. Les sources `Assets` et leurs `.meta`, `Packages`, `ProjectSettings` doivent être versionnés. Déplacer les assets uniquement dans Unity pour conserver leurs GUID.
 
-## Installation et exécution
-
-### Prérequis
-- Unity 6.x (ou Unity 2023.3+)  
-- Meta Quest ou Quest 2 avec **Meta Quest Link / Air Link**
-- Modules XR installés :
-  - ✅ *XR Plugin Management*
-  - ✅ *OpenXR*
-  - ✅ *XR Interaction Toolkit*
-  - ✅ *Input System (New)*
-
-### Étapes
-1. **Cloner le dépôt :**
-   ```bash
-   git clone https://github.com/nicolasPOROT/PRJ-UnityVR.git
-   ```
-2. **Ouvrir le projet dans Unity**
-3. **Configurer OpenXR :**
-   - *Edit → Project Settings → XR Plugin Management → OpenXR*  
-4. **Brancher le casque Meta Quest**
-5. **Se placer sur la scène principale : `Scenes/mainMenu.unity`**
-6. **Appuyer sur Play** pour tester dans l’éditeur ou via le casque
-
----
-
-## Outils et Frameworks utilisés
-
-| Outil / Package | Utilisation principale |
-|------------------|------------------------|
-| **Unity 6** | Moteur de jeu principal |
-| **XR Interaction Toolkit** | Gestion du rig VR et des interactions (sabres, objets, raycast UI) |
-| **Input System (XRI)** | Gestion des contrôleurs Meta Quest |
-| **EzySlice** | Découpe réaliste des fruits en temps réel |
-| **Blender** | Modélisation 3D des fruits et objets |
-| **GitHub** | Gestion de version et travail collaboratif |
-
----
-
-## Fonctionnalités principales
-
-### 1. Système XR et Armes
-- XR Rig complet configuré pour Meta Quest  
-- Sabres virtuels dans chaque main  
-- Découpe dynamique des fruits via EzySlice
-
-### 2. Génération et comportement des fruits
-- Fruits projetés aléatoirement dans les airs avec trajectoires variées  
-- Bombes incluse 
-
-### 3. Système de score et feedback
-- +1 point par fruit tranché  
-- Combo si plusieurs fruits sont coupés en un seul geste  
-- Interface affichant **score** et **vies restantes**  
-- Trancher une bombe = perte d’une vie  
-- Après 3 bombes = Game Over  
-
-### 4. Niveaux et difficulté
-- Différents modes de jeu
-
-### 5. UI et paramètres
-- Menu principal accessible en VR  
-- Choix du niveau de difficulté  
-- Affichage des scores et des vies  
-- Accès aux options via découpage d’un fruit dans le menu (interaction originale)
-
-### 6. Implémentations futures
-- Tableau des scores (classement local)  
-- Sauvegarde du score en fichier JSON  
-- Ajout de fruits bonus et d’effets spéciaux  
-
----
-
-**Équipe :**
-- Fabio Malta  
-- Nicolas Porot  
-- Matéo Biaut  
-- Benjamin Joannard  
+État initial et écarts : [audit](docs/01_etat_initial.md). Rapport provisoire : [Markdown](docs/rapport.md), [PDF](docs/rapport.pdf). Comparaison des tailles : `./tools/Compare-BuildSizes.ps1`.

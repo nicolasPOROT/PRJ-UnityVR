@@ -23,6 +23,10 @@
 
 Ajout autorisé pour le pilotage de l'éditeur : `com.unity.pipeline` 1.0.0 dans Packages/manifest.json. Aucun autre ajout/mise à jour de package prévu.
 
+Lors du premier démarrage en 6000.0.58f1, Unity a automatiquement modifié AI Navigation 2.0.8 → 2.0.9, Version Control 2.8.2 → 2.9.3 et Rider 3.0.36 → 3.0.37 dans le manifest. Le lock résout aussi XR Core Utils 2.5.2 → 2.5.3 et Mono Cecil 1.11.4 → 1.11.6, et ajoute Newtonsoft JSON 3.2.1 (dépendance de Pipeline). URP/XRI/OpenXR/XR Management restent aux versions demandées. Ces modifications sont à valider après l'import ; elles ne constituent pas une mise à jour volontaire globale des packages.
+
+L'éditeur 6000.0.58f1 (44b8bf3a3225) est lancé et a réécrit ProjectVersion.txt. L'import initial et le contrôle console/scènes restent en cours avant de déclarer la migration validée.
+
 ## Production et livraison à réaliser
 
 1. Lire console, vérifier Missing dans MainMenu/PlayScene et prefabs, compiler et effectuer le parcours de non-régression avant chaque build.
