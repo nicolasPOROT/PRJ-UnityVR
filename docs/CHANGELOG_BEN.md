@@ -10,3 +10,4 @@
 - Correction Part 1 de Task 2 : assets importés et EzySlice regroupés sous ThirdParty par MoveAsset, GUID conservés, aucun asset supprimé ; compilation/audit/smoke test réussis. Voir `06_organisation.md`.
 - Ajout Part 1 A : libellés français et taille/contraste du menu améliorés dans MainMenu, instruction de sélection clarifiée. Aucun changement de sélection/difficulté. Audit sans Missing et smoke test logique réussis, lisibilité casque à confirmer.
 - Ajout Part 1 B : score plus grand et gras, zones texte élargies, icônes de vie agrandies dans le prefab GameplayZone ; valeurs de score/vies inchangées. Audit sans Missing et smoke test logique réussis ; lisibilité casque à confirmer.
+- Ajout Part 1 C : ScorePop, animation visuelle de 0,2 s à chaque changement du score affiché, composant et référence présents dans GameplayZone avant Play. Calcul des points inchangé. Compilation, audit et smoke test réussis ; perception casque à confirmer.
