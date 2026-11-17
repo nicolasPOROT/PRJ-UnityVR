@@ -11,6 +11,8 @@
 
 ## Casque PCVR — NON TESTÉ
 
+Amélioration D : confirmer une impulsion légère sur la bonne main à chaque coupe réussie (réglage initial 0,15 / 40 ms dans SliceHapticFeedback), aucune erreur si contrôleur sans support haptique. C : vérifier l'animation du score sans gêne de lecture.
+
 1. Renseigner modèle du casque, runtime OpenXR actif, CPU/GPU/RAM, connexion Link/Air Link, résolution et fréquence.
 2. Lancer le build Windows complet ; vérifier tracking tête/mains, sabres et actions des contrôleurs, accès au menu et lisibilité de l'UI.
 3. Rejouer le parcours gameplay ci-dessus ; vérifier jus/explosion PCVR, absence d'erreur dans Player.log et démarrage répété.

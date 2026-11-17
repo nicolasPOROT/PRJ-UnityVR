@@ -8,7 +8,7 @@ Statuts : OK / KO / **NON TESTÉ**. Premier test logique Play Mode le 17 novembr
 |---|---|---|
 | MainMenu : cinq difficultés et lancement | NON TESTÉ | Lancement par MainSceneManager.Play vérifié ; sélection physique des cinq difficultés non testée |
 | PlayScene : fruits et bombes lancés | OK | Objets FruitBehaviour et BombBehaviour observés après lancement naturel |
-| Coupe EzySlice, jus et explosion | NON TESTÉ | |
+| Coupe EzySlice, jus et explosion | NON TESTÉ | Coupe EzySlice d'un fruit avec vitesse synthétique réussie après D ; rendu jus/explosion et geste physique restent à confirmer |
 | Score simple et combos | OK | Appel FruitBehaviour.IsSliced : +1 ; deux GainScore : +4 après délai de combo |
 | Vies, fruits manqués selon difficulté | NON TESTÉ | Facile : FruitFall préserve les vies, BombBehaviour.IsSliced retire une vie ; autres difficultés à tester |
 | Retour au menu à zéro vie | OK | LoseLife jusqu'à zéro puis transition MainMenu observée |

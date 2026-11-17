@@ -669,6 +669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 784917540531169077}
   - component: {fileID: 2204654329726687686}
+  - component: {fileID: 8489046144085086178}
   m_Layer: 0
   m_Name: saber
   m_TagString: Untagged
@@ -714,6 +715,22 @@ MonoBehaviour:
   sliceableLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &8489046144085086178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040148795076212955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d500abd0f65f72498fbf006af8a17bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blade: {fileID: 2204654329726687686}
+  controllerNode: 4
+  amplitude: 0.15
+  duration: 0.04
 --- !u!1 &4826862536065942853
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1811155238058395906}
   - component: {fileID: 1994383238414379345}
+  - component: {fileID: 5919262097982168293}
   m_Layer: 0
   m_Name: saber
   m_TagString: Untagged
@@ -856,6 +874,22 @@ MonoBehaviour:
   sliceableLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &5919262097982168293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382392085003631876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d500abd0f65f72498fbf006af8a17bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blade: {fileID: 1994383238414379345}
+  controllerNode: 5
+  amplitude: 0.15
+  duration: 0.04
 --- !u!1 &6520952232229781775
 GameObject:
   m_ObjectHideFlags: 0

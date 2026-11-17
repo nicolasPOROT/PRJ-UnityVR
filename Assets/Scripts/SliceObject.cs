@@ -3,6 +3,7 @@ using EzySlice;
 
 public class SliceObject : MonoBehaviour
 {
+    public event System.Action SuccessfulSlice;
     public Transform startSlicePoint;
     public Transform endSlicePoint;
     public VelocityEstimator velocityEstimator;
@@ -39,6 +40,7 @@ public class SliceObject : MonoBehaviour
             SliceableObject sliceableObject = target.GetComponent<SliceableObject>();
 
             sliceableObject.IsSliced();
+            SuccessfulSlice?.Invoke();
 
             // Juice particles
             GameObject sliceFx = sliceableObject.sliceEffect;
