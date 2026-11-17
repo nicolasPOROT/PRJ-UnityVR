@@ -13,6 +13,10 @@
 
 Amélioration D : confirmer une impulsion légère sur la bonne main à chaque coupe réussie (réglage initial 0,15 / 40 ms dans SliceHapticFeedback), aucune erreur si contrôleur sans support haptique. C : vérifier l'animation du score sans gêne de lecture.
 
+F/G : tester le glissement du volume par rayon et sa conservation au redémarrage. Pour les mesures, sélectionner `Player/Main Camera/DebugFpsCanvas` (sous Camera Offset selon la hiérarchie), puis cocher Show Overlay dans FpsOverlay avant un build de test ; décocher pour la livraison. Le compteur est une moyenne des frames applicatives, pas une mesure GPU ni une validation du tracking.
+
+E : tester physiquement les boutons Rejouer et Menu, vérifier que les canons et les sabres cessent d'affecter le score sur l'écran final. Le menu hérité sélectionne toujours les niveaux par découpe, les nouvelles UI utilisent les rayons/gâchettes.
+
 1. Renseigner modèle du casque, runtime OpenXR actif, CPU/GPU/RAM, connexion Link/Air Link, résolution et fréquence.
 2. Lancer le build Windows complet ; vérifier tracking tête/mains, sabres et actions des contrôleurs, accès au menu et lisibilité de l'UI.
 3. Rejouer le parcours gameplay ci-dessus ; vérifier jus/explosion PCVR, absence d'erreur dans Player.log et démarrage répété.

@@ -3,6 +3,19 @@
 if (!EditorApplication.isPlaying) throw new InvalidOperationException("Play Mode requis.");
 var menu = Object.FindFirstObjectByType<MainSceneManager>();
 if (!menu) throw new InvalidOperationException("Démarrer depuis MainMenu.");
+bool fpsOverlayWorks = false;
+var fpsOverlay = Object.FindFirstObjectByType<FpsOverlay>();
+if (fpsOverlay)
+{
+    var fpsSettings = new SerializedObject(fpsOverlay);
+    fpsSettings.FindProperty("showOverlay").boolValue = true;
+    fpsSettings.ApplyModifiedPropertiesWithoutUndo();
+    var fpsLabel = fpsOverlay.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+    await Wait.Until(() => fpsLabel.text != "FPS : —");
+    fpsOverlayWorks = fpsLabel.enabled && fpsLabel.text.StartsWith("FPS :");
+    fpsSettings.FindProperty("showOverlay").boolValue = false;
+    fpsSettings.ApplyModifiedPropertiesWithoutUndo();
+}
 var volumeMenu = Object.FindFirstObjectByType<VolumeMenu>();
 float originalVolume = AudioListener.volume;
 bool volumeApplied = false;
@@ -89,5 +102,5 @@ if (volumeApplied)
     Object.FindFirstObjectByType<VolumeMenu>().GetComponentInChildren<UnityEngine.UI.Slider>().value = originalVolume;
 }
 return new { syntheticEzySlice = successfulCuts == 1, simpleScore = afterSimple - beforeScore, comboScore = afterCombo - afterSimple,
-    initialLives, easyMissPreservesLives, bombCostsLife, spawnedFruits, endScreen, replayReset, volumeApplied, volumePersisted, returnedToMenu = true,
+    initialLives, easyMissPreservesLives, bombCostsLife, spawnedFruits, endScreen, replayReset, volumeApplied, volumePersisted, fpsOverlayWorks, returnedToMenu = true,
     limitation = "Coupe EzySlice avec vitesse injectée ; geste physique, tracking et casque non testés." };
