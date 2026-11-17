@@ -1,6 +1,6 @@
 # Améliorations proposées — validation avant implémentation
 
-Estimations indicatives de réalisation et vérification dans l'éditeur ; aucun élément ci-dessous n'est implémenté. Les corrections obligatoires Tasks 2–3 restent prioritaires.
+Les choix A à G ont tous été validés par Benjamin le 17 novembre 2026, y compris le remplacement du retour immédiat par un écran de fin. Estimations indicatives de réalisation et vérification dans l'éditeur ; aucun élément ci-dessous n'est encore implémenté. Les corrections obligatoires Tasks 2–3 restent prioritaires.
 
 | Choix | Amélioration Part 1 | Effort estimé | Périmètre |
 |---|---|---|---|
