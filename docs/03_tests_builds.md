@@ -2,6 +2,13 @@
 
 Statuts : OK / KO / **NON TESTÉ**. Premier test logique Play Mode le 17 novembre 2026 sous 6000.0.58f1 via `tools/Smoke-Gameplay.cs` ; les appels de méthodes ne remplacent pas les gestes physiques et le test casque.
 
+| Production du livrable | Statut | Résultat |
+|---|---|---|
+| Windows PCVR final | OK | Build réussi, 0 erreur/0 warning ; dossier 133,10 Mo, ZIP 55,28 Mo ; copie des 184 fichiers conforme par SHA256 |
+| APK Quest final | OK | Build réussi, 0 erreur/2 recommandations OpenXR ; APK 55,17 Mo, min API 24, cible 36, ARM64 ; copie conforme par SHA256 |
+
+Les lignes ci-dessus valident la production/copie, pas l'exécution physique. Dernier smoke test complet après reconstruction Windows réussi, éditeur laissé hors Play sur MainMenu.
+
 ## Éditeur — référence de non-régression
 
 Complément après A–G : test à vitesse injectée de SliceObject/EzySlice réussi ; affichage final et boutons Rejouer/Menu invoqués via leurs UnityEvents, réinitialisation score/vies et conservation difficulté réussies. Slider volume à 37 %, retour au menu avec volume conservé puis restauration de la valeur précédente : OK. Activation et mise à jour du FPS : OK. Ces tests logiques ne valident ni pointage par contrôleur ni perception visuelle/haptique au casque. Audit final avant builds : deux scènes et 17 prefabs sans Missing ; compilation réussie.

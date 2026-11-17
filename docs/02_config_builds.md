@@ -1,6 +1,6 @@
 # Configuration des builds
 
-État : paramètres initiaux lus dans Git ; aucun build produit ni validation OpenXR réalisée à ce stade.
+Le premier tableau conserve les paramètres initiaux lus dans Git. La section « Configuration finale appliquée avant builds » décrit les réglages effectivement appliqués et les résultats des builds ; les tests casque restent à effectuer.
 
 | Paramètre | Windows PCVR observé | Android Quest observé | Cible de livraison |
 |---|---|---|---|
@@ -47,7 +47,13 @@ Le dossier généré BurstDebugInformation_DoNotShip Windows est conservé sépa
 
 Le processeur de build Pipeline confirme dans la console que ses assemblies et réglages runtime sont exclus du player Windows (build Release, Pipeline Runtime non inclus). Aucun serveur Pipeline n'est ajouté au jeu livré.
 
+Reconstruction Windows finale après les corrections UI/Input Handling : **Succeeded**, **0 erreur / 0 warning**, 1 min 37 s, 139 566 307 octets dans le dossier joueur. Le ZIP final mesure 57 963 597 octets. Le dossier Windows de livraison contient 184 fichiers, tous comparés au build par SHA256. L'APK copié dans Livrable/Quest a également un SHA256 identique au fichier construit.
+
+Les builds ont resérialisé les réglages URP et adapté les références XR préchargées à la cible active (Windows à la fin). Ces mises à jour Unity sont conservées sans changement manuel des qualités graphiques. Les données actuelles des polices TMP sont conservées : le processeur TMP_PreBuildProcessor nettoie les données dynamiques des fonts avant build et les textes les régénèrent ; aucune restauration globale ni suppression n'a été effectuée. Le dossier Resources temporairement utilisé par le framework de performance reste vide, conservé avec .gitkeep et sa métadonnée Unity ; les JSON générés par le hook ont été nettoyés par le framework.
+
 Premier essai APK interrompu : le dialogue natif Unity « Unsupported Input Handling » détecte `Both` (valeur 2), non pris en charge sur Android. Choix No, build annulé ; passage par l'éditeur à **Input System Package (New)** uniquement (valeur 1). Le rig et les UI utilisés s'appuient déjà sur Input System. Cet échec de configuration est distingué des résultats du build final ; les messages sont consignés avant nettoyage de la console.
+
+**APK final produit avec succès** après correction : `Builds/Android_Quest/FruitNinjaVR_Quest.apk`, 57 851 307 octets (55,17 Mo), Build Report **0 erreur / 2 warnings** correspondant aux recommandations OpenXR déjà documentées. AAPT confirme `fr.st2vaas.fruitninjavr.ben`, version 0.1.0 / code 1, min SDK 24, target/compile SDK **36**, ABI **arm64-v8a** uniquement. Aucun test sur Quest ni commande ADB d'installation exécuté.
 
 ## Production et livraison à réaliser
 

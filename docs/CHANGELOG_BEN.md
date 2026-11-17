@@ -20,3 +20,18 @@
 - Correction Part 1 Android : premier essai APK annulé au dialogue Unsupported Input Handling ; passage du mode hérité Both à Input System uniquement via PlayerSettings. Le rig/UI utilisent déjà le nouveau système. L'incident est conservé dans `02_config_builds.md`, le build final est à vérifier séparément.
 - Vérification après correction Input Handling : cinq difficultés parcourues via SelectDif (niveau reçu et spawn OK ; fruit manqué coûte 0/0/1/1/1 vie), puis smoke test complet EzySlice/score/combos/bombe/écran final/rejouer/menu/volume/FPS réussi. Console courante 0 erreur/0 warning. Aucune interaction physique testée.
 - Finalisation source : sérialisation URP et préchargements XR par Unity conservés après les builds, données dynamiques TMP conservées sans restauration globale ni suppression ; dossier Resources généré par le framework conservé vide avec métadonnée/.gitkeep. Gameplay non modifié par cette étape.
+- Task 4 : builds finaux Windows (0 erreur/0 warning) et Quest (0 erreur/2 recommandations OpenXR) réussis ; dossier/ZIP Windows 133,10/55,28 Mo, APK 55,17 Mo. Les copies de livraison sont identiques par SHA256 (184 fichiers Windows et APK), archive commune créée hors Git. Dernier smoke test complet Windows réussi.
+- Tasks 5/livrables : analyses ZIP de l'APK, manifeste AAPT, Build Reports et comparaison des tailles documentés ; rapport Markdown/PDF avec capture éditeur et limites explicites. APK Analyzer, tracking/haptique physique, mesures FPS réelles et captures casque restent NON RÉALISÉS.
+
+## Bilan par phase
+
+| Phase | Fichiers / assets concernés | Résultat observé | Commits principaux | Reste manuel |
+|---|---|---|---|---|
+| 0 / 0a | ProjectVersion, manifest/lock, docs/01_etat_initial.md | Tag s7-initial sur 9313f11, Unity 6000.0.58f1, compilation sans erreur ; 2 warnings initiaux du modèle sword.001 | 0e014c2, 3ffbb0a, 03a39c4 | Tracking et rendu physique |
+| Corrections Tasks 2–3 | ThirdParty, métadonnées EzySlice, Fx PCVR/Quest, PlatformFxSelector, références des fruits/bombes/menu | GUID conservés, aucun asset supprimé, 4 variantes réelles, audit sans Missing et smoke test réussi | 95872e4, a4de8b0 | Rendu des effets au casque |
+| 1 | MainMenu, Player, GameplayZone, UI/VolumeMenu, UiRay.mat, scripts ScorePop/Haptique/GameOver/Volume/FPS | A–G implémentés, cinq difficultés vérifiées, parcours complet et capture éditeur ; console finale 0 erreur/0 warning | 52cb28d, 5b80d84, 4b22020, d08a1bd, 1fda290, f743059, c314194, 36bd696 | Pointage, haptique, lisibilité et FPS physiques |
+| 2 | Profils Windows_PCVR/Android_Quest, XR, PlayerSettings, Builds/Livrable hors Git | Windows réussi 0 erreur/0 warning ; Quest réussi 0 erreur/2 recommandations OpenXR ; copies conformes SHA256 | ed7ea9e, 4fdc8c8, 498ebf5 | Installation ADB et tests des deux casques |
+| 3 | tools/Compare-BuildSizes.ps1, Inspect-ApkContents, Read-BuildReport ; docs/04 et 07–10, rapports JSON | APK 55,17 Mo ; ZIP Windows 55,28 Mo ; dossier Windows 133,10 Mo ; analyse réelle des entrées ZIP | e0d400f | APK Analyzer Android Studio et captures |
+| 4 | README, A_FAIRE_MANUELLEMENT, rapport.md/pdf, captures, livraison/SHA256 | PDF de 3 pages exporté ; archive commune de 185 fichiers vérifiée ; sources et métadonnées suivies, builds exclus | Commit final des documents | Membres/URL à confirmer, compléter résultats et captures casque |
+
+Vérification Git finale avant clôture : 0 asset importable sans .meta suivi ; aucun fichier Library/Temp/Logs/UserSettings/Builds/Livrable versionné. Les seules AddComponent des scripts du jeu restent les Rigidbody/MeshCollider des morceaux EzySlice hérités. Aucun générateur de scène, UI ou effet au lancement ajouté. Aucun push effectué.

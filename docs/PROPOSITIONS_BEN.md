@@ -1,6 +1,6 @@
 # Améliorations proposées — validation avant implémentation
 
-Les choix A à G ont tous été validés par Benjamin le 17 novembre 2026, y compris le remplacement du retour immédiat par un écran de fin. Estimations indicatives de réalisation et vérification dans l'éditeur ; aucun élément ci-dessous n'est encore implémenté. Les corrections obligatoires Tasks 2–3 restent prioritaires.
+Les choix A à G ont tous été validés par Benjamin le 17 novembre 2026, y compris le remplacement du retour immédiat par un écran de fin. Ils sont désormais implémentés, avec un commit dédié et des contrôles logiques dans l'éditeur ; les tests physiques restent à effectuer. Les estimations initiales ci-dessous sont conservées comme trace de la proposition. Les corrections obligatoires Tasks 2–3 ont également été réalisées.
 
 | Choix | Amélioration Part 1 | Effort estimé | Périmètre |
 |---|---|---|---|
