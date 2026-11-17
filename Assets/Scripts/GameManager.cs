@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     // UI updating
     public GameObject[] lifeUI;
     public TextMeshProUGUI scoreUi;
+    [SerializeField] private GameOverPresentation gameOverPresentation;
 
     // Combo logic
     private float comboEndTime = 0.8f;
@@ -45,7 +46,11 @@ public class GameManager : MonoBehaviour
     {
         if (lifes <= 0)
         {
-            Debug.Log("Game Over");
+            if (gameOverPresentation != null)
+            {
+                gameOverPresentation.Show(score);
+                return;
+            }
             SceneManager.LoadScene("MainMenu");
         }
 

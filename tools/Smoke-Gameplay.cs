@@ -54,7 +54,24 @@ Object.Destroy(bomb.gameObject);
 bool bombCostsLife = gm.lifes == initialLives - 1;
 int spawnedFruits = Object.FindObjectsByType<FruitBehaviour>(FindObjectsSortMode.None).Length;
 while (gm.lifes > 0) gm.LoseLife();
+var gameOver = Object.FindFirstObjectByType<GameOverPresentation>();
+bool endScreen = false;
+bool replayReset = false;
+if (gameOver)
+{
+    await Wait.Until(() => !gm.enabled && gameOver.IsVisible);
+    endScreen = true;
+    gameOver.GetComponentsInChildren<UnityEngine.UI.Button>(true).Single(b => b.name == "ReplayButton").onClick.Invoke();
+    await Wait.Until(() => gm == null && Object.FindFirstObjectByType<GameManager>() != null);
+    gm = Object.FindFirstObjectByType<GameManager>();
+    await Wait.Until(() => gm.lifes > 0);
+    replayReset = gm.score == 0 && gm.lifes == initialLives && gm.difficulty == 0;
+    while (gm.lifes > 0) gm.LoseLife();
+    gameOver = Object.FindFirstObjectByType<GameOverPresentation>();
+    await Wait.Until(() => !gm.enabled && gameOver.IsVisible);
+    gameOver.GetComponentsInChildren<UnityEngine.UI.Button>(true).Single(b => b.name == "MenuButton").onClick.Invoke();
+}
 await Wait.Until(() => UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MainMenu");
 return new { syntheticEzySlice = successfulCuts == 1, simpleScore = afterSimple - beforeScore, comboScore = afterCombo - afterSimple,
-    initialLives, easyMissPreservesLives, bombCostsLife, spawnedFruits, returnedToMenu = true,
+    initialLives, easyMissPreservesLives, bombCostsLife, spawnedFruits, endScreen, replayReset, returnedToMenu = true,
     limitation = "Coupe EzySlice avec vitesse injectée ; geste physique, tracking et casque non testés." };
