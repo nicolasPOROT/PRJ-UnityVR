@@ -1863,7 +1863,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &8750797324277880883
 MonoBehaviour:
@@ -1900,6 +1900,7 @@ MonoBehaviour:
   finalScoreLabel: {fileID: 5709281750542322698}
   gameManager: {fileID: 7798828797968460177}
   canonManager: {fileID: 3226895351379442948}
+  gameplayHud: {fileID: 1573781958476354501}
   blades:
   - {fileID: 5693667374807998359}
   - {fileID: 5347463652639584000}
@@ -3009,7 +3010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.025, g: 0.05, b: 0.08, a: 0.97}
+  m_Color: {r: 0.025, g: 0.05, b: 0.08, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

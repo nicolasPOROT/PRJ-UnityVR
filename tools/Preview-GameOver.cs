@@ -1,0 +1,11 @@
+if (!EditorApplication.isPlaying) throw new InvalidOperationException("Play requis depuis MainMenu.");
+Object.FindFirstObjectByType<MainSceneManager>().Play();
+await Wait.Until(() => Object.FindFirstObjectByType<GameManager>() != null);
+var gm = Object.FindFirstObjectByType<GameManager>();
+await Wait.Until(() => gm.lifes > 0);
+gm.GainScore();
+await Wait.Until(() => gm.score == 1);
+while (gm.lifes > 0) gm.LoseLife();
+var presentation = Object.FindFirstObjectByType<GameOverPresentation>();
+await Wait.Until(() => !gm.enabled && presentation.IsVisible);
+return new { preview = "Scénario automatisé éditeur, sans casque", finalScore = gm.score, visible = presentation.IsVisible };

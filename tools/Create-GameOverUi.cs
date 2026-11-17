@@ -72,10 +72,10 @@ try
     var go = Child("GameOverCanvas", camera.transform, new Vector2(760, 440), Vector2.zero);
     go.transform.localPosition = new Vector3(0, 0, 1.6f);
     go.transform.localScale = Vector3.one * 0.002f;
-    var canvas = go.AddComponent<Canvas>(); canvas.renderMode = RenderMode.WorldSpace; canvas.worldCamera = camera;
+    var canvas = go.AddComponent<Canvas>(); canvas.renderMode = RenderMode.WorldSpace; canvas.worldCamera = camera; canvas.sortingOrder = 100;
     go.AddComponent<TrackedDeviceGraphicRaycaster>();
     var panel = Child("GameOverPanel", go.transform, new Vector2(760, 440), Vector2.zero);
-    panel.AddComponent<Image>().color = new Color(0.025f, 0.05f, 0.08f, 0.97f);
+    panel.AddComponent<Image>().color = new Color(0.025f, 0.05f, 0.08f, 1f);
     Label("Title", "Partie terminée", panel.transform, new Vector2(700, 80), new Vector2(0, 140), 48);
     var score = Label("FinalScore", "Score final : 0", panel.transform, new Vector2(700, 80), new Vector2(0, 40), 42);
     var presentation = go.AddComponent<GameOverPresentation>();
@@ -84,6 +84,7 @@ try
     data.FindProperty("finalScoreLabel").objectReferenceValue = score;
     data.FindProperty("gameManager").objectReferenceValue = gm;
     data.FindProperty("canonManager").objectReferenceValue = root.GetComponentInChildren<CononsManager>(true);
+    data.FindProperty("gameplayHud").objectReferenceValue = gm.scoreUi.canvas.gameObject;
     var blades = root.GetComponentsInChildren<SliceObject>(true);
     data.FindProperty("blades").arraySize = blades.Length;
     for (int i = 0; i < blades.Length; i++) data.FindProperty("blades").GetArrayElementAtIndex(i).objectReferenceValue = blades[i];

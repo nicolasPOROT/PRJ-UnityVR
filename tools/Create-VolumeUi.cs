@@ -26,6 +26,7 @@ try
     var fillGo = Rect("Fill", sliderGo.transform, new Vector2(480, 16), Vector2.zero); fillGo.AddComponent<Image>().color = new Color(0.25f, 0.85f, 0.6f);
     var handleGo = Rect("Handle", sliderGo.transform, new Vector2(38, 66), Vector2.zero); var handleImage = handleGo.AddComponent<Image>(); handleImage.color = Color.white;
     slider.fillRect = (RectTransform)fillGo.transform; slider.handleRect = (RectTransform)handleGo.transform; slider.targetGraphic = handleImage; slider.minValue = 0; slider.maxValue = 1; slider.value = 1;
+    slider.fillRect.sizeDelta = new Vector2(0, -32); slider.handleRect.sizeDelta = new Vector2(38, 16);
     var controller = root.AddComponent<VolumeMenu>();
     var data = new SerializedObject(controller); data.FindProperty("volumeSlider").objectReferenceValue = slider; data.FindProperty("volumeLabel").objectReferenceValue = label; data.ApplyModifiedPropertiesWithoutUndo();
     UnityEventTools.AddPersistentListener(slider.onValueChanged, controller.SetVolume);
@@ -36,8 +37,9 @@ var scene = EditorSceneManager.OpenScene("Assets/Scenes/MainMenu.unity");
 var camera = Object.FindFirstObjectByType<Camera>();
 var instance = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/UI/VolumeMenu.prefab"), scene);
 instance.transform.SetParent(camera.transform, false);
-instance.transform.localPosition = new Vector3(0, -0.55f, 1.6f); instance.transform.localScale = Vector3.one * 0.0015f;
+instance.transform.localPosition = new Vector3(0, -0.25f, 0.8f); instance.transform.localScale = Vector3.one * 0.001f;
 instance.GetComponent<Canvas>().worldCamera = camera;
+instance.GetComponent<Canvas>().sortingOrder = 100;
 PrefabUtility.RecordPrefabInstancePropertyModifications(instance.transform); PrefabUtility.RecordPrefabInstancePropertyModifications(instance.GetComponent<Canvas>());
 EditorSceneManager.MarkSceneDirty(scene); EditorSceneManager.SaveScene(scene); AssetDatabase.SaveAssets();
 return true;

@@ -18,6 +18,8 @@ if (fpsOverlay)
 }
 var volumeMenu = Object.FindFirstObjectByType<VolumeMenu>();
 float originalVolume = AudioListener.volume;
+try
+{
 bool volumeApplied = false;
 if (volumeMenu)
 {
@@ -68,7 +70,7 @@ int afterCombo = gm.score;
 int initialLives = gm.lifes;
 gm.FruitFall();
 bool easyMissPreservesLives = gm.lifes == initialLives;
-await Wait.Until(() => Object.FindObjectsByType<BombBehaviour>(FindObjectsSortMode.None).Length > 0);
+await Wait.Until(() => Object.FindObjectsByType<BombBehaviour>(FindObjectsSortMode.None).Length > 0, timeoutMs: 30000);
 var bomb = Object.FindFirstObjectByType<BombBehaviour>();
 bomb.IsSliced();
 Object.Destroy(bomb.gameObject);
@@ -104,3 +106,10 @@ if (volumeApplied)
 return new { syntheticEzySlice = successfulCuts == 1, simpleScore = afterSimple - beforeScore, comboScore = afterCombo - afterSimple,
     initialLives, easyMissPreservesLives, bombCostsLife, spawnedFruits, endScreen, replayReset, volumeApplied, volumePersisted, fpsOverlayWorks, returnedToMenu = true,
     limitation = "Coupe EzySlice avec vitesse injectée ; geste physique, tracking et casque non testés." };
+}
+finally
+{
+    AudioListener.volume = originalVolume;
+    PlayerPrefs.SetFloat("FruitNinjaVR.AudioVolume", originalVolume);
+    PlayerPrefs.Save();
+}

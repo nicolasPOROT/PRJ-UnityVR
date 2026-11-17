@@ -8,6 +8,7 @@ public sealed class GameOverPresentation : MonoBehaviour
     [SerializeField] private TextMeshProUGUI finalScoreLabel;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private CononsManager canonManager;
+    [SerializeField] private GameObject gameplayHud;
     [SerializeField] private SliceObject[] blades;
     public bool IsVisible => panel.activeSelf;
 
@@ -18,7 +19,8 @@ public sealed class GameOverPresentation : MonoBehaviour
         finalScoreLabel.SetText("Score final : {0}", score);
         panel.SetActive(true);
         canonManager.enabled = false;
-        foreach (var blade in blades) blade.enabled = false;
+        gameplayHud.SetActive(false);
+        foreach (var blade in blades) blade.gameObject.SetActive(false);
         gameManager.enabled = false;
     }
 
