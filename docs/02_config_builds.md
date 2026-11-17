@@ -27,6 +27,24 @@ Lors du premier démarrage en 6000.0.58f1, Unity a automatiquement modifié AI N
 
 L'éditeur 6000.0.58f1 (44b8bf3a3225) est lancé et a réécrit ProjectVersion.txt. L'import initial et le contrôle console/scènes restent en cours avant de déclarer la migration validée.
 
+## Configuration finale appliquée avant builds
+
+Migration compilée et vérifiée dans MainMenu/PlayScene. Profils réels : `Assets/Settings/Build Profiles/Windows_PCVR.asset` et `Android_Quest.asset`. MainMenu puis PlayScene, TestScene exclue. Company `ST2VAAS`, Product `Fruit Ninja VR`, application Android `fr.st2vaas.fruitninjavr.ben`.
+
+Android : IL2CPP, ARM64 uniquement, Linear, minimum API **24** (minimum OpenXR 1.15.1 ; correction du 23 initial), target API auto. SDK installés : Android 34/35/36 ; API choisie effectivement à relever dans le build. Vulkan puis OpenGLES3, API automatique désactivée. Provider OpenXR et initialisation au démarrage configurés ; profils Oculus Touch / Meta Quest Touch Plus / Pro et Meta Quest Support activés. Windows : OpenXR et profils hérités conservés, Windows x64.
+
+Quatre Prefab Variants et sélection PCVR/Android en place, voir `05_effets_plateformes.md`. Show Overlay désactivé par défaut pour la livraison.
+
+Validation avant builds : Standalone **0 erreur, 0 recommandation** ; Android **0 erreur, 2 recommandations** (SSAO dans un renderer configuré et option facultative Prioritize Input Polling). Aucune optimisation SSAO appliquée sans validation. Contrôle éditeur : deux scènes, 17 prefabs, aucun Missing détecté. Console courante avant lancement Windows : 0 erreur/0 warning, historique de deux warnings d'import `sword.001`.
+
+Outils Android de l'installation Unity : NDK **27.2.12479018**, OpenJDK **17.0.9** (fichiers source.properties/release lus). Aucun outil de contournement installé.
+
+Build Windows PCVR produit avec succès en **6 min 53 s**, Build Report **0 erreur / 0 warning**, backend Mono, cible Windows x64, profil Windows_PCVR. Rapport détaillé : `build_report_windows.json`. Machine de compilation : Intel i7-9700KF, 15,9 Gio RAM, RTX 2060 (adaptateurs d'affichage virtuels également présents). Aucun test d'exécution au casque n'en est déduit.
+
+Qualités héritées conservées : Windows utilise PC/PC_RPAsset (render scale 1, MSAA 1 = désactivé, HDR actif, depth/opaque textures actives, ombre principale 2048). Android a Mobile/Mobile_RPAsset comme qualité par défaut (render scale 0,8, MSAA 1 = désactivé, HDR actif, depth/opaque textures désactivées, ombre principale 1024). Shadow distance URP 50 pour les deux. `Mobile_Renderer` n'a aucune Renderer Feature ; la recommandation SSAO provient des pipelines globalement configurés, dont PC, sans ajout de SSAO au renderer mobile.
+
+Le dossier généré BurstDebugInformation_DoNotShip Windows est conservé séparément dans `Builds/Windows_Symbols` et exclu du ZIP/livrable joueur. Aucun symbole n'est supprimé.
+
 ## Production et livraison à réaliser
 
 1. Lire console, vérifier Missing dans MainMenu/PlayScene et prefabs, compiler et effectuer le parcours de non-régression avant chaque build.
