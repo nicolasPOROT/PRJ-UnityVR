@@ -1,18 +1,18 @@
 # Tests des builds
 
-Statuts : OK / KO / **NON TESTÉ**. Aucun contrôle Play Mode réalisé pendant l'audit statique. Compléter résultat, date et preuve après exécution effective.
+Statuts : OK / KO / **NON TESTÉ**. Premier test logique Play Mode le 17 novembre 2026 sous 6000.0.58f1 via `tools/Smoke-Gameplay.cs` ; les appels de méthodes ne remplacent pas les gestes physiques et le test casque.
 
 ## Éditeur — référence de non-régression
 
 | Test | Statut | Résultat / preuve à compléter |
 |---|---|---|
-| MainMenu : cinq difficultés et lancement | NON TESTÉ | |
-| PlayScene : fruits et bombes lancés | NON TESTÉ | |
+| MainMenu : cinq difficultés et lancement | NON TESTÉ | Lancement par MainSceneManager.Play vérifié ; sélection physique des cinq difficultés non testée |
+| PlayScene : fruits et bombes lancés | OK | Objets FruitBehaviour et BombBehaviour observés après lancement naturel |
 | Coupe EzySlice, jus et explosion | NON TESTÉ | |
-| Score simple et combos | NON TESTÉ | |
-| Vies, fruits manqués selon difficulté | NON TESTÉ | |
-| Retour au menu à zéro vie | NON TESTÉ | |
-| Absence de Missing / erreurs console | NON TESTÉ | |
+| Score simple et combos | OK | Appel FruitBehaviour.IsSliced : +1 ; deux GainScore : +4 après délai de combo |
+| Vies, fruits manqués selon difficulté | NON TESTÉ | Facile : FruitFall préserve les vies, BombBehaviour.IsSliced retire une vie ; autres difficultés à tester |
+| Retour au menu à zéro vie | OK | LoseLife jusqu'à zéro puis transition MainMenu observée |
+| Absence de Missing / erreurs console | OK | Audit éditeur des 2 scènes et 12 prefabs : aucun Missing détecté ; aucune erreur, 2 warnings historiques d'import du modèle sword.001 |
 
 ## Windows PCVR
 

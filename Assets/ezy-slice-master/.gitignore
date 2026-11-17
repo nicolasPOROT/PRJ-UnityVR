@@ -1,4 +1,5 @@
 
-*.meta
+# Conserver les GUID Unity dans le projet source.
+!*.meta
 
 \.DS_Store

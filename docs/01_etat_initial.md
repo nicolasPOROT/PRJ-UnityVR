@@ -39,6 +39,8 @@ Les observations ci-dessous proviennent des fichiers suivis. Elles ne constituen
 Sous `Assets/ezy-slice-master/` : `.gitignore`, `LICENSE`, `README.md`, `Graphics/icon.png`, `EzySlice/SlicedHull.cs`, `Slicer.cs`, `SlicerExtensions.cs` et `EzySlice/Framework/{IntersectionResult,Intersector,Line,Plane,TextureRegion,Triangle,Triangulator}.cs`.
 Les fichiers cachés comme `.gitignore` ne sont pas nécessairement importés par Unity. Ne pas fabriquer leurs métadonnées arbitrairement.
 
+Cause confirmée : `Assets/ezy-slice-master/.gitignore` contient initialement `*.meta`, ce qui masque les métadonnées EzySlice. Correction engagée : remplacer cette exclusion par une inclusion des `.meta`, puis ajouter les fichiers réellement produits par Unity.
+
 ## Gros fichiers source déjà suivis
 
 | Fichier | Taille source (octets) |
@@ -58,3 +60,7 @@ Chemins relatifs à `Assets/Imported_assets`. Ces tailles source ne représenten
 4. Valider les améliorations de confort avant leur implémentation ; ensuite configurer et produire les builds.
 
 Console Unity : **NON LUE**, erreurs/warnings **INCONNUS** au moment de cet audit initial. Aucun test Play Mode ou casque déclaré réalisé.
+
+Suite de la mise en place : Pipeline 1.0.0 installé avec accord, éditeur 6000.0.58f1 lancé, ProjectVersion mis à jour par Unity. Le serveur est détecté mais reste en état starting pendant l'import initial ; son tampon console vide avec groundTruth=null ne permet pas de conclure à zéro erreur. Les changements automatiques de packages sont détaillés dans `02_config_builds.md`.
+
+Contrôle après import : dialogue natif « Deprecated packages » fermé par Dismiss sans action sur les packages. Audit Pipeline exécuté hors Play sous 6000.0.58f1 : MainMenu 39 objets, PlayScene 1277 objets et 12 prefabs inspectés, aucun Missing détecté. Validation OpenXR Standalone sans problème ; Android avertit que l'API minimale 23 doit être au moins 24. Console après import : compilation réussie, 0 erreur, deux warnings d'import de `sword.001` dans `Assets/Models/sao_sword.fbx` (polygone auto-intersectant écarté). Après Play, console courante 0 erreur/0 warning, historique du tampon conservant ces deux warnings. Premier smoke test logique décrit dans `03_tests_builds.md`, gestes de coupe et casque non testés.
