@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7125816358455218464}
   - component: {fileID: 1121652044131912412}
   - component: {fileID: 1868413663819079519}
+  - component: {fileID: 2180392001560928440}
   m_Layer: 6
   m_Name: apple
   m_TagString: Untagged
@@ -152,5 +153,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871434188a1624a40898522baf3006d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliceEffect: {fileID: 2312393614409040804, guid: 1d32e2b34b3213a4b823120348d3c823, type: 3}
+  sliceEffect: {fileID: 4182482116132750735, guid: e2e2e90f4317c52429c77cfffe78d3bc, type: 3}
   sliceAudioClip: {fileID: 8300000, guid: ee0d623ff2c0f82418f3e8719c113775, type: 3}
+--- !u!114 &2180392001560928440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517074633875663036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534b63702b6d0bf4a837068b8c787d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceable: {fileID: 1868413663819079519}
+  pcvrEffect: {fileID: 4182482116132750735, guid: e2e2e90f4317c52429c77cfffe78d3bc, type: 3}
+  questEffect: {fileID: 4864718306257407012, guid: 8fecf6a488c190b44a3929159fd6a282, type: 3}

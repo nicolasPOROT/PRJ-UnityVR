@@ -81,6 +81,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fac57f1e10e92c548a0fe5dea481fecf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6462779101287312992}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fac57f1e10e92c548a0fe5dea481fecf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4564054667648501651}
   m_SourcePrefab: {fileID: 100100000, guid: fac57f1e10e92c548a0fe5dea481fecf, type: 3}
 --- !u!1 &6700169259391877994 stripped
 GameObject:
@@ -148,5 +151,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafd5aac57a19d44a944baee5419169d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliceEffect: {fileID: 8738173072865485684, guid: 2a2c334646cbed24bb9f621ece35c743, type: 3}
+  sliceEffect: {fileID: 8534402880328139650, guid: 40962ebf3ef5eab42b03ba1f1ac26b50, type: 3}
   sliceAudioClip: {fileID: 8300000, guid: 74622c4504d670d42a626e192f98089c, type: 3}
+--- !u!114 &4564054667648501651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700169259391877994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534b63702b6d0bf4a837068b8c787d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceable: {fileID: 6462779101287312992}
+  pcvrEffect: {fileID: 8534402880328139650, guid: 40962ebf3ef5eab42b03ba1f1ac26b50, type: 3}
+  questEffect: {fileID: 5024061063559325924, guid: 8f6c52b9ccff7f44b93e1e84ffb8bbb4, type: 3}

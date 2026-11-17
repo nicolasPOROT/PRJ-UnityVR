@@ -2129,6 +2129,7 @@ GameObject:
   - component: {fileID: 803481972207180794}
   - component: {fileID: 485902722965066693}
   - component: {fileID: 7767954394670991418}
+  - component: {fileID: 7767954394670991419}
   m_Layer: 6
   m_Name: Dif0Selector
   m_TagString: Untagged
@@ -2168,6 +2169,7 @@ GameObject:
   - component: {fileID: 6283306142994035027}
   - component: {fileID: 5529483797529245152}
   - component: {fileID: 7658379210600716074}
+  - component: {fileID: 7658379210600716075}
   m_Layer: 6
   m_Name: Dif4Selector
   m_TagString: Untagged
@@ -2417,6 +2419,7 @@ GameObject:
   - component: {fileID: 7431961097886227614}
   - component: {fileID: 7491324132450931279}
   - component: {fileID: 7492157503285513597}
+  - component: {fileID: 7492157503285513598}
   m_Layer: 6
   m_Name: Dif3Selector
   m_TagString: Untagged
@@ -2504,9 +2507,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd0d456130d21d4db49fdae55e3e79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliceEffect: {fileID: 8738173072865485684, guid: 2a2c334646cbed24bb9f621ece35c743, type: 3}
+  sliceEffect: {fileID: 8534402880328139650, guid: 40962ebf3ef5eab42b03ba1f1ac26b50, type: 3}
   sliceAudioClip: {fileID: 8300000, guid: 74622c4504d670d42a626e192f98089c, type: 3}
   dificultySelected: 3
+--- !u!114 &7492157503285513598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178347625895882825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534b63702b6d0bf4a837068b8c787d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceable: {fileID: 7492157503285513597}
+  pcvrEffect: {fileID: 8534402880328139650, guid: 40962ebf3ef5eab42b03ba1f1ac26b50, type: 3}
+  questEffect: {fileID: 5024061063559325924, guid: 8f6c52b9ccff7f44b93e1e84ffb8bbb4, type: 3}
 --- !u!33 &7658379210600716073
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2527,9 +2545,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd0d456130d21d4db49fdae55e3e79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliceEffect: {fileID: 8738173072865485684, guid: 2a2c334646cbed24bb9f621ece35c743, type: 3}
+  sliceEffect: {fileID: 8534402880328139650, guid: 40962ebf3ef5eab42b03ba1f1ac26b50, type: 3}
   sliceAudioClip: {fileID: 8300000, guid: d36d830373337e9428ed88e5e09c9e6d, type: 3}
   dificultySelected: 4
+--- !u!114 &7658379210600716075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4193321584109326125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534b63702b6d0bf4a837068b8c787d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceable: {fileID: 7658379210600716074}
+  pcvrEffect: {fileID: 8534402880328139650, guid: 40962ebf3ef5eab42b03ba1f1ac26b50, type: 3}
+  questEffect: {fileID: 5024061063559325924, guid: 8f6c52b9ccff7f44b93e1e84ffb8bbb4, type: 3}
 --- !u!114 &7767954394670991418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2542,9 +2575,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd0d456130d21d4db49fdae55e3e79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliceEffect: {fileID: 2312393614409040804, guid: 1d32e2b34b3213a4b823120348d3c823, type: 3}
+  sliceEffect: {fileID: 4182482116132750735, guid: e2e2e90f4317c52429c77cfffe78d3bc, type: 3}
   sliceAudioClip: {fileID: 8300000, guid: ee0d623ff2c0f82418f3e8719c113775, type: 3}
   dificultySelected: 0
+--- !u!114 &7767954394670991419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3999603385744404901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534b63702b6d0bf4a837068b8c787d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceable: {fileID: 7767954394670991418}
+  pcvrEffect: {fileID: 4182482116132750735, guid: e2e2e90f4317c52429c77cfffe78d3bc, type: 3}
+  questEffect: {fileID: 4864718306257407012, guid: 8fecf6a488c190b44a3929159fd6a282, type: 3}
 --- !u!64 &7888662941821842574
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2580,6 +2628,7 @@ GameObject:
   - component: {fileID: 609651366914892565}
   - component: {fileID: 4246752096896226847}
   - component: {fileID: 8078980298634718614}
+  - component: {fileID: 8078980298634718615}
   m_Layer: 6
   m_Name: Dif2Selector
   m_TagString: Untagged
@@ -2599,9 +2648,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd0d456130d21d4db49fdae55e3e79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliceEffect: {fileID: 2312393614409040804, guid: 1d32e2b34b3213a4b823120348d3c823, type: 3}
+  sliceEffect: {fileID: 4182482116132750735, guid: e2e2e90f4317c52429c77cfffe78d3bc, type: 3}
   sliceAudioClip: {fileID: 8300000, guid: ee0d623ff2c0f82418f3e8719c113775, type: 3}
   dificultySelected: 2
+--- !u!114 &8078980298634718615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8078980298634718613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534b63702b6d0bf4a837068b8c787d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceable: {fileID: 8078980298634718614}
+  pcvrEffect: {fileID: 4182482116132750735, guid: e2e2e90f4317c52429c77cfffe78d3bc, type: 3}
+  questEffect: {fileID: 4864718306257407012, guid: 8fecf6a488c190b44a3929159fd6a282, type: 3}
 --- !u!1 &8312422569515764045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,6 +2705,7 @@ GameObject:
   - component: {fileID: 6018424721913055306}
   - component: {fileID: 7888662941821842574}
   - component: {fileID: 9054416715657256931}
+  - component: {fileID: 9054416715657256932}
   m_Layer: 6
   m_Name: Dif1Selector
   m_TagString: Untagged
@@ -2660,9 +2725,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd0d456130d21d4db49fdae55e3e79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliceEffect: {fileID: 2312393614409040804, guid: 1d32e2b34b3213a4b823120348d3c823, type: 3}
+  sliceEffect: {fileID: 4182482116132750735, guid: e2e2e90f4317c52429c77cfffe78d3bc, type: 3}
   sliceAudioClip: {fileID: 8300000, guid: ee0d623ff2c0f82418f3e8719c113775, type: 3}
   dificultySelected: 1
+--- !u!114 &9054416715657256932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054416715657256930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534b63702b6d0bf4a837068b8c787d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliceable: {fileID: 9054416715657256931}
+  pcvrEffect: {fileID: 4182482116132750735, guid: e2e2e90f4317c52429c77cfffe78d3bc, type: 3}
+  questEffect: {fileID: 4864718306257407012, guid: 8fecf6a488c190b44a3929159fd6a282, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
