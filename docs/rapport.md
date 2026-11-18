@@ -6,35 +6,35 @@
 
 **Benjamin JOANNARD** · ST2VAAS — S9 Majeure T2IA · 2026–2027
 
-Projet : [github.com/nicolasPOROT/PRJ-UnityVR](https://github.com/nicolasPOROT/PRJ-UnityVR) — branche `Mini-projet-Ben`.
+Projet : [github.com/nicolasPOROT/PRJ-UnityVR](https://github.com/nicolasPOROT/PRJ-UnityVR/tree/Mini-projet-Ben) — branche Mini-projet-Ben.
 
-Cette reprise individuelle s'appuie sur le projet collectif réalisé en S7 en 2025–2026. L'objectif est de conserver une base jouable, organiser les ressources, adapter deux effets et livrer un build Windows PCVR et un APK Meta Quest autonome. Les tests physiques ci-dessous s'appuient sur les vidéos fournies et sur le retour du testeur.
+Pour cette première partie, j'ai repris le Fruit Ninja VR réalisé en groupe en S7. J'ai conservé le gameplay existant, réorganisé les ressources, adapté les effets aux deux plateformes et ajouté plusieurs améliorations de confort. J'ai ensuite testé le jeu sur Meta Quest 3, en PCVR avec Virtual Desktop et en autonome avec l'APK Android.
 
-## 1. État initial S7, corrections et organisation — Tasks 1 et 2
+## 1. État initial, corrections et organisation
 
-| Fonctionnalité / élément initial | État observé | Travail réalisé pour cette Part 1 |
+| Fonctionnalité / élément | État initial S7 | Modifications Part 1 |
 |---|---|---|
-| Fruits, bombes, deux sabres, coupe et score | Gameplay opérationnel dans la base S7 | Conservation des règles ; vérification des coupes, du score, des combos et des pénalités |
-| Cinq difficultés | Présentes ; fruits manqués sans perte de vie aux niveaux 0–1 | Vérification des cinq niveaux ; règles inchangées |
-| Entraînement, bonus, classement et JSON | Aucun mode d'entraînement distinct ni comportement bonus identifié ; classement et sauvegarde JSON absents | Absences consignées ; aucun de ces éléments n'est présenté comme réalisé |
-| Effets | Un jus et une explosion communs aux plateformes | Quatre variantes PCVR/Quest et sélection automatique par plateforme |
-| Configuration XR | Base OpenXR Windows présente ; configuration Android incomplète | Ajout du provider Android, du support Quest et des profils Touch ; validation sans erreur bloquante |
-| Réglage du volume | Absent de la base examinée | Ajout d'un slider VR et mémorisation du volume |
-| Fin de partie et lisibilité | Retour immédiat au menu ; affichage perfectible | Écran de fin, score final, boutons Rejouer/Menu et UI plus lisible |
+| Fruits, bombes, sabres, coupe et score | Gameplay fonctionnel | Règles conservées ; vérification des coupes, combos et pénalités |
+| Cinq difficultés | Présentes ; pas de pénalité pour un fruit manqué aux niveaux 0–1 | Vérification des cinq niveaux, sans changement des règles |
+| Entraînement, bonus, classement et JSON | Pas de mode d'entraînement distinct, de bonus spécifique, de classement ni de sauvegarde JSON identifiés | Fonctions absentes de cette version |
+| Effets | Un jus et une explosion communs aux plateformes | Quatre variantes PCVR/Quest, sélectionnées automatiquement |
+| Configuration XR | OpenXR Windows présent, configuration Android incomplète | OpenXR Android, support Quest et profils Touch configurés |
+| Volume | Aucun réglage dans le menu | Slider utilisable par rayon et volume mémorisé |
+| Interface et fin de partie | Lisibilité perfectible, retour immédiat au menu | HUD agrandi, écran final avec score et boutons Rejouer/Menu |
 
-Les ressources importées et EzySlice sont regroupés dans `Assets/ThirdParty`. Les éléments du jeu restent répartis entre `Scenes`, `Scripts`, `Prefabs/Fruits`, `Prefabs/Bombs`, `Prefabs/Fx`, `Prefabs/UI`, `Materials`, `Models` et `Sounds`. Les déplacements ont conservé les GUID et les références. Les actions XRI utilisées restent dans le dossier Samples. L'audit des deux scènes et des 17 prefabs du jeu ne détecte aucun composant ou référence manquants. Une copie initiale est conservée dans Git au tag `s7-initial`.
+J'ai regroupé les ressources importées et EzySlice dans **Assets/ThirdParty**, en les déplaçant dans l'éditeur pour conserver les GUID. Les éléments du jeu sont répartis entre Scenes, Scripts, Prefabs/Fruits, Prefabs/Bombs, Prefabs/Fx, Prefabs/UI, Materials, Models et Sounds. Les actions XRI utilisées restent dans Samples.
 
-La séquence de build est **MainMenu (index 0) → PlayScene (index 1)** ; TestScene est exclue. La compilation du projet ne présente pas d'erreur.
+La scène de démarrage est **MainMenu (index 0)**, suivie de **PlayScene (index 1)**. TestScene reste réservée aux essais. Le contrôle des deux scènes et des 17 prefabs du jeu ne signale aucun composant ou référence manquants. Le tag **s7-initial** conserve l'état de départ.
 
-Les ajouts personnels comprennent aussi une animation discrète du score, une impulsion haptique à la coupe et un compteur FPS activable pour les tests. Le spawn, EzySlice, les calculs de score/combos, les vies et la difficulté conservent leur logique héritée. Le volume est mémorisé avec PlayerPrefs ; cela ne constitue pas une sauvegarde JSON des scores.
+J'ai également ajouté une animation du score, une impulsion haptique à chaque coupe et un compteur FPS activable. Le spawn, EzySlice, le score, les combos, les vies et la difficulté conservent leur logique S7. Le volume est enregistré avec PlayerPrefs.
 
-![Ajouts de confort : volume PCVR à gauche (00:43,60) ; écran final Quest à droite (00:48,00). Images extraites des vidéos du testeur.](preuves/captures/volume_et_fin.jpg)
+![Volume réglable par rayon en PCVR à gauche ; score final et boutons de fin de partie sur Quest à droite.](preuves/captures/volume_et_fin.jpg)
 
 <!-- PAGE BREAK -->
 
-## 2. Deux effets adaptés à PCVR et Quest — Task 3
+## 2. Effets de coupe et d'explosion
 
-Une coupe instancie le jus à la position de l'objet tranché ; toucher une bombe déclenche l'explosion et la pénalité. Les quatre Prefab Variants portent les suffixes `_PCVR` et `_Quest`. `PlatformFxSelector` référence les deux variantes dans l'Inspector et choisit Quest dans le player Android, PCVR dans le player Windows. Les prefabs d'origine sont conservés comme bases.
+Une coupe déclenche le jus à la position du fruit ; une bombe touchée déclenche l'explosion et la perte d'une vie. J'ai créé quatre Prefab Variants, avec les suffixes **_PCVR** et **_Quest**, à partir des effets S7. Le composant **PlatformFxSelector** sélectionne la variante Android ou Windows à partir des références assignées dans l'Inspector.
 
 ### Coupe de fruit : JuiceFx
 
@@ -43,96 +43,106 @@ Une coupe instancie le jus à la position de l'objet tranché ; toucher une bomb
 | PCVR | 1 000 | 15 | 0,9 s | 0,1 | Activée |
 | Quest | 120 | 1–6 | 0,675 s | 0,1 | Désactivée |
 
-Le matériau **JuiceMat / Shader Graphs/Juice** est conservé. Modules principaux : Shape, Emission, Size over Lifetime et Trails. L'émission continue est nulle : les particules sont émises par burst. La version Quest réduit la densité et la durée, et retire la simulation de collision du jus.
+Le matériau **JuiceMat / Shader Graphs/Juice** est commun aux deux variantes. Shape, Emission, Size over Lifetime et Trails sont actifs. L'émission continue est nulle : chaque coupe produit un burst. Sur Quest, j'ai réduit le nombre de gouttes et leur durée, et désactivé les collisions pour alléger la simulation.
 
-![Coupe : PCVR à gauche (00:32,50), Quest autonome à droite (00:17,50). Les gouttes et traînées orange restent identifiables sur les deux plateformes.](preuves/captures/comparaison_jus.jpg)
+![Jus : PCVR à gauche (00:32,50), Quest autonome à droite (00:17,50). La variante Quest conserve les gouttes orange et les traînées, avec une densité réduite.](preuves/captures/comparaison_jus.jpg)
 
 ### Bombe : ExplosionFx
 
-| Système | Taille | Max PC / Quest | Burst PC / Quest | Lifetime PC / Quest |
+| Système | Start size | Max PC / Quest | Burst PC / Quest | Lifetime PC / Quest |
 |---|---:|---:|---|---|
 | Explosion principale | 3 | 1 000 / 80 | 30 / 1–12 | 0,7 / 0,525 s |
 | Fumée | 2 | 1 000 / 80 | 30 / 1–12 | 0,7 / 0,525 s |
 | Étincelles | 0,05 | 1 000 / 80 | 20 / 1–8 | 0,5 / 0,375 s |
 
-Explosion et fumée utilisent **ParticlesUnlit / URP Particles Unlit**, les étincelles **SparkMat / URP Lit**. Les collisions sont désactivées sur les trois systèmes. Shape et Emission sont actifs ; Color over Lifetime agit sur l'explosion/fumée, Size over Lifetime sur la fumée, Trails sur les étincelles. Noise et Velocity over Lifetime sont désactivés.
+Explosion et fumée utilisent **ParticlesUnlit / URP Particles Unlit**, les étincelles **SparkMat / URP Lit**. Les collisions sont désactivées. Shape et Emission sont actifs ; Color over Lifetime agit sur l'explosion/fumée, Size over Lifetime sur la fumée et Trails sur les étincelles. Noise et Velocity over Lifetime restent désactivés.
 
-![Explosion de bombe : PCVR à gauche (00:37,55), Quest autonome à droite (00:45,35). Le flash jaune-orangé et les particules accompagnent la perte de la dernière vie.](preuves/captures/comparaison_explosion.jpg)
+![Explosion : PCVR à gauche (00:37,55), Quest autonome à droite (00:45,35). Le flash jaune-orangé accompagne la perte de la dernière vie.](preuves/captures/comparaison_explosion.jpg)
 
-**Adaptation.** Matériaux et tailles restent communs. Quest réduit bursts, plafonds et durées (−25 %) et retire les collisions du jus : le feedback conserve son apparence, avec moins de particules et une persistance plus courte. Les captures proviennent de parties différentes, non synchronisées ; elles n'établissent aucun gain FPS.
+J'ai gardé les mêmes matériaux et tailles pour conserver l'identité des effets. Sur Quest, les plafonds et les bursts sont plus faibles, et les durées sont réduites de **25 %**. En jeu, les deux événements restent lisibles ; l'effet Quest est moins dense et disparaît plus rapidement.
 
 <!-- PAGE BREAK -->
 
-## 3. Configuration et tests des deux builds — Task 4
+## 3. Configuration et tests des builds
 
-**Environnement logiciel :** Unity 6000.0.58f1, URP 17.0.4, XR Interaction Toolkit 3.2.1, OpenXR 1.15.1, XR Management 4.5.2, EzySlice.
+**Environnement :** Unity 6000.0.58f1, URP 17.0.4, XR Interaction Toolkit 3.2.1, OpenXR 1.15.1, XR Management 4.5.2 et EzySlice.
 
 | Paramètre | Windows PCVR | Meta Quest autonome |
 |---|---|---|
-| Casque testé | Meta Quest 3 | Meta Quest 3 |
-| Exécution | Player Windows sur PC ; liaison Virtual Desktop | APK installé et exécuté sur le casque, confirmé par le testeur |
+| Casque | Meta Quest 3 | Meta Quest 3 |
+| Exécution | Player Windows via Virtual Desktop | APK installé sur le casque |
 | Cible / backend | Windows x64 / Mono | Android / IL2CPP / ARM64 uniquement |
 | XR | OpenXR, profils Oculus Touch / Quest Touch | OpenXR, Meta Quest Support et profils Touch |
 | Qualité URP | PC : render scale 1, ombres 2048 | Mobile : render scale 0,8, ombres 1024 |
-| Autres réglages graphiques | Linear, HDR actif, MSAA désactivé | Linear, HDR actif, MSAA désactivé ; Vulkan puis OpenGLES3 |
+| Réglages graphiques | Linear, HDR actif, MSAA désactivé | Linear, HDR actif, MSAA désactivé ; Vulkan puis OpenGLES3 |
 | API Android | Sans objet | Minimum 24 ; cible et compilation 36 |
-| Build final | Réussi : 0 erreur, 0 warning | Réussi : 0 erreur, 2 recommandations OpenXR non bloquantes |
+| Compilation finale | Réussie : 0 erreur, 0 warning | Réussie : 0 erreur, 2 recommandations OpenXR |
 
-Les scènes sont identiques et les variantes d'effets diffèrent selon la plateforme. SDK/NDK/OpenJDK sont installés pour cette version d'Unity. L'identifiant Android est `fr.st2vaas.fruitninjavr.ben` (version 0.1.0). Les recommandations OpenXR concernent le SSAO des pipelines configurés et une option de latence d'entrée ; le renderer mobile n'a pas de Renderer Feature SSAO.
+Les deux builds utilisent MainMenu et PlayScene, avec la variante d'effets correspondant à la plateforme. L'application Android porte l'identifiant **fr.st2vaas.fruitninjavr.ben**, version 0.1.0. Les modules Android, SDK, NDK et OpenJDK sont installés avec l'éditeur.
 
-Le PC de compilation relevé est un **Intel i7-9700KF, 15,9 Gio de RAM et RTX 2060**. La correspondance exacte avec le poste de test PCVR, le runtime OpenXR Windows actif et les réglages Virtual Desktop (résolution, fréquence, débit) ne sont pas consignés. Ils ne sont pas remplacés par des valeurs supposées.
+La validation XR ne présente pas d'erreur bloquante. Les deux recommandations Android concernent le SSAO des pipelines configurés et une option de latence d'entrée. Le renderer mobile ne possède pas de Renderer Feature SSAO.
 
-### Résultats des essais physiques
+J'ai utilisé le même PC pour la compilation et les tests PCVR : **Intel i7-9700KF, RTX 2060 et 15,9 Gio de RAM**. Le runtime OpenXR actif pendant l'essai PCVR, la fréquence du casque et les paramètres Virtual Desktop n'ont pas été relevés.
 
-Vidéos examinées : **PCVR, 86,21 s**, et **APK Quest, 74,97 s**. Elles montrent le jeu déjà ouvert : le démarrage initial et l'installation autonome sont confirmés par le testeur, pas filmés intégralement.
+### Résultats sur Meta Quest 3
 
-| Vérification | PCVR | Quest autonome | Élément de preuve |
+J'ai testé le lancement, les sabres, les coupes, les bombes, l'évolution du score et des vies, puis le retour au menu sur les deux versions. Les enregistrements durent environ **86 s en PCVR** et **75 s en autonome**.
+
+| Vérification | PCVR | Quest autonome | Résultat |
 |---|---|---|---|
-| Lancement et accès au jeu | Validé | Validé | Retour du testeur ; application en fonctionnement dans les vidéos |
-| Suivi et deux sabres utilisables | Observés | Observés | Mouvements du point de vue et des sabres pendant les coupes ; précision/latence non mesurées |
-| Fruits, bombes, coupe, score et vies | Observés | Observés | Fruits séparés, progression du score, disparition de vies et fin de partie ; aucun bonus spécifique identifié |
-| Jus et explosion | Observés | Observés | Deux effets visibles ; comparaisons de la section 2 |
-| Volume par contrôle VR | Validé | Validé | Slider manipulé dans les deux vidéos et confirmation du testeur |
-| Écran final et retour au menu | Validés | Validés | Écrans finaux et transitions vers le menu visibles sur les deux vidéos |
-| Retour haptique | Confirmé | Confirmé | Sensation validée par le testeur sur les deux builds ; non déductible d'une vidéo |
-| Stabilité de la séquence | Aucun crash visible | Aucun crash visible | Observation limitée aux courtes séquences fournies |
+| Lancement | OK | OK | Accès au menu et à une partie |
+| Tracking et sabres | OK | OK | Suivi de la vue et des contrôleurs, deux sabres utilisables |
+| Fruits, bombes, coupe, score et vies | OK | OK | Fruits séparés, score mis à jour et pénalités appliquées |
+| Effets visuels | OK | OK | Jus à la coupe, explosion à l'impact sur une bombe |
+| Menu et volume | OK | OK | Sélection de difficulté et slider utilisables en VR |
+| Écran de fin et retour au menu | OK | OK | Score final lisible et retour à la sélection |
+| Retour haptique | OK | OK | Impulsion ressentie lors d'une coupe |
+| Exécution des parties enregistrées | OK | OK | Aucun crash ou blocage constaté |
 
-Les vérifications complémentaires dans l'éditeur couvrent les cinq difficultés, les règles de perte de vie, les combos et la réinitialisation par Rejouer. Elles complètent les essais physiques sans étendre ce qui est démontré par les vidéos.
+Les contrôles dans l'éditeur couvrent aussi les cinq difficultés, les combos, les règles de perte de vie et la réinitialisation du score et des vies avec Rejouer. Les niveaux 0–1 ne pénalisent pas les fruits manqués ; les niveaux 2–4 retirent une vie. Une bombe retire une vie dans chaque mode.
 
-**Fluidité : FPS non mesurés.** Les séquences montrent un jeu utilisable, sans blocage repéré ; elles ne permettent pas de mesurer la fréquence réelle du rendu, les frames reprojetées ou la latence. Leur encodage autour de 30 images/s n'est pas une mesure des FPS du jeu. Le sujet rend le relevé chiffré facultatif ; aucune valeur de performance n'est inventée.
+**FPS : non mesurés.** Les essais prolongés et la stabilité thermique n'ont pas été testés.
 
 <!-- PAGE BREAK -->
 
-## 4. Analyse de l'APK et comparaison des versions — Task 5
+## 4. Analyse de l'APK et comparaison
 
-L'APK final a été examiné par lecture de sa structure ZIP et par le Build Report Unity. **La manipulation dans Android Studio APK Analyzer et ses captures restent à ajouter pour compléter la procédure demandée dans le sujet.** Les mesures ci-dessous proviennent du fichier réellement produit.
+J'ai examiné la structure ZIP de l'APK et les Build Reports Unity pour identifier les principaux fichiers et les ressources les plus lourdes.
 
 | Entrée / groupe | Mo compressés | Mo décompressés | Rôle |
 |---|---:|---:|---|
-| assets/bin/Data | 26,57 | 55,04 | Données Unity : scènes, ressources sérialisées, métadonnées et fichiers regroupés |
-| lib/arm64-v8a/libil2cpp.so | 15,37 | 61,65 | Bibliothèque native issue du code C# via IL2CPP |
+| assets/bin/Data | 26,57 | 55,04 | Scènes, ressources sérialisées, métadonnées et données Unity regroupées |
+| lib/arm64-v8a/libil2cpp.so | 15,37 | 61,65 | Code C# converti en bibliothèque native par IL2CPP |
 | lib/arm64-v8a/libunity.so | 9,07 | 20,61 | Moteur Unity natif |
-| classes.dex | 2,25 | 6,16 | Bytecode Java/Kotlin de la couche Android et de ses dépendances |
+| classes.dex | 2,25 | 6,16 | Bytecode Java/Kotlin de la couche Android |
 | resources.arsc | 0,24 | 0,24 | Table compilée des ressources Android |
 
-Les ressources Unity étant regroupées, un fichier de données ne correspond pas nécessairement à une texture ou un prefab. La lecture du ZIP ne remplace donc pas l'inspection des assets dans le Build Report. Celui-ci attribue environ **29,01 / 28,02 Mo** aux textures Windows/Quest, **3,50 Mo** aux modèles et **0,06 Mo** à l'audio sur chaque plateforme. Les six faces de la skybox Epic_BlueSunset représentent environ **24 Mo packés** et constituent la principale piste d'optimisation des assets. Les shaders représentent 1,82 / 2,97 Mo ; Android embarque les variantes pour deux API graphiques.
+Une partie des ressources est regroupée dans les fichiers Unity. Le Build Report permet de compléter cette vue avec une répartition par catégorie : **29,01 / 28,02 Mo de textures** pour Windows/Quest, **3,50 Mo de modèles** et **0,06 Mo d'audio** sur chaque plateforme. Les six faces de la skybox Epic_BlueSunset représentent environ **24 Mo packés**.
 
-### Taille des livrables
+Les shaders occupent **1,82 Mo sur Windows** et **2,97 Mo sur Quest**, qui embarque des variantes pour deux API graphiques. La skybox constitue la principale piste de réduction du poids des ressources.
+
+### Comparaison des tailles
 
 | Livrable | Taille en Mo | Taille en octets |
 |---|---:|---:|
 | APK Quest | 55,17 | 57 851 307 |
-| Archive ZIP Windows | 55,28 | 57 963 597 |
+| ZIP Windows | 55,28 | 57 963 597 |
 | Dossier Windows complet | 133,10 | 139 566 307 |
 
-**Unité : 1 Mo = 1 048 576 octets.** APK et ZIP sont compressés, contrairement à la somme des fichiers du dossier Windows. Leurs tailles proches ne signifient pas un contenu identique : Windows utilise Mono, Quest IL2CPP et des bibliothèques ARM64. Le total brut du Build Report Android inclut aussi des fichiers intermédiaires C++/natifs hors APK ; il n'est pas utilisé comme taille de livraison.
+**1 Mo = 1 048 576 octets.** L'APK et le ZIP sont compressés, contrairement à la somme des fichiers du dossier Windows. Leurs tailles proches recouvrent des contenus différents : Windows utilise Mono, tandis que Quest utilise IL2CPP et des bibliothèques ARM64. Le total brut du Build Report Android comprend des intermédiaires de compilation hors APK.
 
-Le gameplay et les UI restent utilisables sur les deux plateformes dans les essais fournis. Les adaptations Quest conservent l'identité des effets tout en réduisant particules, durées et collisions. Les vidéos ne permettent pas d'attribuer une différence de netteté ou de fluidité à ces seuls réglages : capture, compression et streaming PCVR interviennent également. Aucun avantage de performance chiffré n'est revendiqué.
+Les deux versions conservent le même gameplay et des interfaces lisibles. PCVR utilise des effets plus denses ; la version autonome réduit les particules, leur persistance et les collisions du jus. Les paramètres URP mobiles réduisent également la résolution interne et celle des ombres. La compression vidéo et le streaming Virtual Desktop influencent aussi le rendu des captures.
 
-## 5. Difficultés, solutions et limites restantes
+## 5. Difficultés et limites
 
-- **Déploiement Android :** la configuration héritée Input Handling Both bloquait le build. Le passage à Input System uniquement, déjà utilisé par le rig/UI, a permis de produire l'APK après vérification du gameplay.
-- **Interfaces :** lisibilité renforcée et écran final ajouté. HUD et sabres sont masqués en fin de partie ; certains fragments et particules encore actifs peuvent passer brièvement devant le panneau lors de la transition, comme le montrent les vidéos.
-- **Effets :** l'adaptation repose sur des variantes distinctes et une sélection par plateforme. Les matériaux restent communs ; les réductions ne constituent pas une preuve de gain FPS sans mesure à conditions identiques.
-- **Limites des essais :** pas de mesure de FPS/latence, de session prolongée ou de stabilité thermique ; paramètres de streaming/fréquence non consignés. Le classement, la sauvegarde JSON et les bonus absents de la base ne sont pas présentés comme ajoutés.
-- **Avant remise :** joindre les captures d'APK Analyzer, compléter les paramètres de test disponibles et vérifier que la branche du dépôt est publiée et accessible à l'enseignant. Les relevés et captures horodatées sont détaillés dans `docs/preuves/README.md` ; les fichiers de livraison sont regroupés dans `Livrable/FruitNinjaVR_Part1.zip`.
+Le premier build Android a été bloqué par le réglage **Input Handling Both**. Je l'ai remplacé par **Input System Package (New)**, déjà utilisé par le rig et les interfaces. L'APK a ensuite été généré avec succès.
+
+Pour la fin de partie, j'ai ajouté un panneau opaque, masqué le HUD et les sabres, et conservé le score final à l'écran. Des fragments et particules encore actifs peuvent passer brièvement devant le panneau pendant la transition.
+
+| Point restant | État |
+|---|---|
+| Analyse Android Studio APK Analyzer et captures | Non réalisées ; analyse ZIP et Build Reports disponibles |
+| Mesures de latence et stabilité thermique | Non réalisées |
+| Classement, sauvegarde JSON et bonus spécifiques | Absents de cette version |
+
+Les livrables comprennent le projet source sur GitHub, le dossier Windows complet, l'APK Quest autonome et ce rapport. Les captures des essais sont conservées dans **docs/preuves/captures**.

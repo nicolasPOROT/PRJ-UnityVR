@@ -1,17 +1,15 @@
-# Améliorations proposées — validation avant implémentation
+# Améliorations Part 1
 
-Les choix A à G ont tous été validés par Benjamin le 17 novembre 2026, y compris le remplacement du retour immédiat par un écran de fin. Ils sont implémentés, avec un commit dédié et des contrôles logiques dans l'éditeur. Le 18 novembre, les vidéos montrent les deux builds sur Quest 3 ; volume, écran final et haptique sont confirmés sur les deux par le testeur. Aucune mesure FPS physique n'a été réalisée (facultative dans le sujet). Les estimations initiales ci-dessous sont conservées comme trace de la proposition. Les corrections obligatoires Tasks 2–3 ont également été réalisées.
+| Ajout | Réalisation |
+|---|---|
+| Menu | Libellés français, taille et contraste améliorés ; sélection par découpe conservée |
+| HUD | Score agrandi et gras, zones de texte élargies et icônes de vie agrandies |
+| Animation du score | ScorePop : animation de 0,2 s lors d'un changement de score |
+| Haptique | SliceHapticFeedback : impulsion de 0,15 pendant 40 ms à la coupe |
+| Fin de partie | Panneau de score final, Rejouer et Menu ; HUD et sabres masqués |
+| Volume | Slider par rayon, volume global mémorisé avec PlayerPrefs |
+| Compteur de test | FpsOverlay activable dans Player, masqué dans les builds de livraison |
 
-| Choix | Amélioration Part 1 | Effort estimé | Périmètre |
-|---|---|---|---|
-| A | Libellés de difficulté plus lisibles et présentation cohérente du menu | 30–45 min | Textes et Canvas déjà présents ; sélection par découpe conservée |
-| B | Score et vies : taille, contraste, placement adaptés à la vue | 30–45 min | Réglages UI dans prefab/scène ; validation de lisibilité au casque requise |
-| C | Animation légère du score à chaque gain affiché | 30–45 min | Logique visuelle uniquement ; aucun changement du calcul des combos |
-| D | Retour haptique léger lors d'une coupe | 45–60 min | Références Inspector aux contrôleurs ; intensité réglable, test casque requis |
-| E | Écran de fin avec score final, Rejouer et Menu | 60–90 min | Canvas et boutons posés dans l'éditeur ; nécessite de remplacer le retour immédiat existant, accord explicite requis |
-| F | Réglage du volume depuis le menu | 60–90 min | Slider/AudioMixer et références sérialisées ; fonction absente de S7 |
-| G | Compteur FPS de développement activable | 30–45 min | Texte et composant présents avant Play ; mesure indicative, pas une validation de fluidité sur casque |
+Les règles de spawn, de coupe EzySlice, de score, de combo, de vie et de difficulté sont conservées. Les quatre variantes d'effets et PlatformFxSelector assurent l'adaptation PCVR/Quest.
 
-Pas de feedback hover proposé par défaut : le menu hérité sélectionne les difficultés par découpe de fruits. Ajouter de vrais boutons impliquerait un choix d'interface supplémentaire.
-
-Le sélecteur d'effets PCVR/Quest et ses quatre prefabs relèvent de la correction obligatoire de Task 3. Ils ne sont pas une amélioration facultative. Chaque amélioration validée aura un commit et une entrée distincts dans CHANGELOG_BEN.md.
+Essais sur Meta Quest 3 en PCVR et en autonome : volume, fin de partie et haptique fonctionnels. FPS non mesurés.

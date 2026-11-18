@@ -1,46 +1,34 @@
-# Changelog Benjamin — Part 1
+# Historique — Benjamin JOANNARD
 
-## 17 novembre 2026
+## Éléments hérités de S7
 
-- Élément hérité S7 : gameplay, menu par découpe et deux effets communs audités sans modification. Voir `01_etat_initial.md`.
-- Ajout Part 1 : branche `Mini-projet-Ben`, tag initial `s7-initial`, audit, propositions validées A à G, procédures de tests et d'analyse, squelette de rapport et comparaison des tailles en PowerShell.
-- Ajout Part 1 autorisé : `com.unity.pipeline` 1.0.0 pour piloter l'éditeur. Import et migration 6000.0.58f1 en cours de vérification ; aucune amélioration A–G encore déclarée réalisée.
-- Ajout Part 1 : export du squelette `rapport.pdf` avec Edge local ; README réécrit pour distinguer PCVR et Quest autonome, avec état des validations explicite. Script de tailles vérifié avec trois fichiers/dossiers temporaires de 1,00 / 2,00 / 0,50 Mo et avec les livrables absents.
-- Correction Part 1 de Task 3 : quatre Prefab Variants PCVR/Quest, PlatformFxSelector sérialisé sur fruits/bombes et sélecteurs du menu ; réglages détaillés dans `05_effets_plateformes.md`. Gameplay et deux effets S7 conservés. Compilation réussie, audit sans Missing, smoke test logique répété avec succès ; casque non testé.
-- Correction Part 1 de Task 2 : assets importés et EzySlice regroupés sous ThirdParty par MoveAsset, GUID conservés, aucun asset supprimé ; compilation/audit/smoke test réussis. Voir `06_organisation.md`.
-- Ajout Part 1 A : libellés français et taille/contraste du menu améliorés dans MainMenu, instruction de sélection clarifiée. Aucun changement de sélection/difficulté. Audit sans Missing et smoke test logique réussis, lisibilité casque à confirmer.
-- Ajout Part 1 B : score plus grand et gras, zones texte élargies, icônes de vie agrandies dans le prefab GameplayZone ; valeurs de score/vies inchangées. Audit sans Missing et smoke test logique réussis ; lisibilité casque à confirmer.
-- Ajout Part 1 C : ScorePop, animation visuelle de 0,2 s à chaque changement du score affiché, composant et référence présents dans GameplayZone avant Play. Calcul des points inchangé. Compilation, audit et smoke test réussis ; perception casque à confirmer.
-- Ajout Part 1 D : SliceHapticFeedback sur les deux sabres du prefab Player, référence au sabre et main XR sérialisées, impulsion 0,15 / 40 ms à la coupe réussie. SliceObject expose seulement un événement après sa logique existante. Compilation et audit sans erreur ; smoke test renforcé avec une vraie découpe EzySlice à vitesse synthétique réussi. Vibration physique non testée.
-- Ajout Part 1 E : Canvas de fin et boutons Rejouer/Menu préassemblés dans GameplayZone, références sérialisées ; retour immédiat remplacé par l'écran final validé. Canons/sabres sont arrêtés à la fin, sans changement des règles de score/vies. Rayons UI XRI préassemblés dans Player et module XR UI dans les deux scènes. Test logique : écran visible, bouton Rejouer réinitialise score/vies en conservant la difficulté, bouton Menu revient au menu ; aucune erreur console courante. Pointage physique non testé.
-- Ajout Part 1 F : prefab VolumeMenu et slider dans MainMenu ; volume global AudioListener mémorisé dans PlayerPrefs (aucun classement/JSON ajouté). Test par événement du slider à 37 %, conservation après partie/rejouer/menu et restauration de la valeur précédente réussis. Compilation/audit/smoke test sans erreur ; glissement par rayon physique à tester.
-- Ajout Part 1 G : DebugFpsCanvas et FpsLabel préassemblés dans Player, FpsOverlay désactivé par son option Show Overlay par défaut. Activation et actualisation du texte vérifiées en Play Mode, puis smoke test complet réussi. Les valeurs éditeur ne sont pas des mesures de fluidité sur casque.
-- Ajout Part 1 Task 4 : profils Windows_PCVR et Android_Quest, identité propre, OpenXR/Meta Quest et profils Touch Android configurés, IL2CPP/ARM64/Linear, minimum API 24 selon validation OpenXR. Aucun problème bloquant de validation ; recommandations SSAO/latence Android documentées, sans optimisation non validée.
-- Correction Part 1 après inspection visuelle : masquer le HUD et les sabres à l'écran final, fond opaque, rapprocher le volume du joueur et corriger les ancres/dimensions du slider. Deux scènes et 17 prefabs sans Missing, test complet réussi sous la cible Android de l'éditeur. Un essai avait dépassé l'attente de 10 s d'un spawn aléatoire de bombe ; délai du test porté à 30 s sans changer le spawn, volume désormais restauré par finally même si le test échoue. Captures de scénarios éditeur, aucun test casque ajouté.
-- Correction Part 1 Android : premier essai APK annulé au dialogue Unsupported Input Handling ; passage du mode hérité Both à Input System uniquement via PlayerSettings. Le rig/UI utilisent déjà le nouveau système. L'incident est conservé dans `02_config_builds.md`, le build final est à vérifier séparément.
-- Vérification après correction Input Handling : cinq difficultés parcourues via SelectDif (niveau reçu et spawn OK ; fruit manqué coûte 0/0/1/1/1 vie), puis smoke test complet EzySlice/score/combos/bombe/écran final/rejouer/menu/volume/FPS réussi. Console courante 0 erreur/0 warning. Aucune interaction physique testée.
-- Finalisation source : sérialisation URP et préchargements XR par Unity conservés après les builds, données dynamiques TMP conservées sans restauration globale ni suppression ; dossier Resources généré par le framework conservé vide avec métadonnée/.gitkeep. Gameplay non modifié par cette étape.
-- Task 4 : builds finaux Windows (0 erreur/0 warning) et Quest (0 erreur/2 recommandations OpenXR) réussis ; dossier/ZIP Windows 133,10/55,28 Mo, APK 55,17 Mo. Les copies de livraison sont identiques par SHA256 (184 fichiers Windows et APK), archive commune créée hors Git. Dernier smoke test complet Windows réussi.
-- Tasks 5/livrables : analyses ZIP de l'APK, manifeste AAPT, Build Reports et comparaison des tailles documentés ; rapport Markdown/PDF avec capture éditeur et limites explicites. APK Analyzer, tracking/haptique physique, mesures FPS réelles et captures casque restent NON RÉALISÉS.
+- Gameplay : canons, fruits, bombes, sabres et découpe EzySlice.
+- Score, combos, vies et cinq difficultés.
+- Menu avec choix de difficulté par découpe.
+- Effets JuiceFx et ExplosionFx.
 
-## Bilan par phase
+## 17 novembre 2026 — reprise et déploiement
 
-| Phase | Fichiers / assets concernés | Résultat observé | Commits principaux | Reste manuel |
-|---|---|---|---|---|
-| 0 / 0a | ProjectVersion, manifest/lock, docs/01_etat_initial.md | Tag s7-initial sur 9313f11, Unity 6000.0.58f1, compilation sans erreur ; 2 warnings initiaux du modèle sword.001 | 0e014c2, 3ffbb0a, 03a39c4 | Tracking et rendu physique |
-| Corrections Tasks 2–3 | ThirdParty, métadonnées EzySlice, Fx PCVR/Quest, PlatformFxSelector, références des fruits/bombes/menu | GUID conservés, aucun asset supprimé, 4 variantes réelles, audit sans Missing et smoke test réussi | 95872e4, a4de8b0 | Rendu des effets au casque |
-| 1 | MainMenu, Player, GameplayZone, UI/VolumeMenu, UiRay.mat, scripts ScorePop/Haptique/GameOver/Volume/FPS | A–G implémentés, cinq difficultés vérifiées, parcours complet et capture éditeur ; console finale 0 erreur/0 warning | 52cb28d, 5b80d84, 4b22020, d08a1bd, 1fda290, f743059, c314194, 36bd696 | Pointage, haptique, lisibilité et FPS physiques |
-| 2 | Profils Windows_PCVR/Android_Quest, XR, PlayerSettings, Builds/Livrable hors Git | Windows réussi 0 erreur/0 warning ; Quest réussi 0 erreur/2 recommandations OpenXR ; copies conformes SHA256 | ed7ea9e, 4fdc8c8, 498ebf5 | Installation ADB et tests des deux casques |
-| 3 | tools/Compare-BuildSizes.ps1, Inspect-ApkContents, Read-BuildReport ; docs/04 et 07–10, rapports JSON | APK 55,17 Mo ; ZIP Windows 55,28 Mo ; dossier Windows 133,10 Mo ; analyse réelle des entrées ZIP | e0d400f | APK Analyzer Android Studio et captures |
-| 4 | README, A_FAIRE_MANUELLEMENT, rapport.md/pdf, captures, livraison/SHA256 | PDF de 3 pages exporté ; archive commune de 185 fichiers vérifiée ; sources et métadonnées suivies, builds exclus | Commit final des documents | Membres/URL à confirmer, compléter résultats et captures casque |
+- Conservation de l'état initial au tag s7-initial ; projet sous Unity 6000.0.58f1.
+- Correction de l'exclusion des .meta EzySlice.
+- Regroupement des ressources importées et d'EzySlice sous ThirdParty.
+- Création de JuiceFx_PCVR, JuiceFx_Quest, ExplosionFx_PCVR et ExplosionFx_Quest.
+- Ajout de PlatformFxSelector et assignation des variantes aux fruits, bombes et sélecteurs.
+- Amélioration des textes du menu, du score et des icônes de vie.
+- Ajout de ScorePop, de l'haptique et de l'écran de fin avec Rejouer/Menu.
+- Ajout du réglage de volume mémorisé et du compteur FPS activable.
+- Configuration des profils Windows_PCVR et Android_Quest, d'OpenXR et des profils Touch.
+- Passage à Input System uniquement pour résoudre le blocage Android avec Both.
+- Builds Windows et Quest produits ; Windows : 0 erreur/0 warning, Quest : 0 erreur/2 recommandations OpenXR.
+- Contrôle des références de deux scènes et 17 prefabs sans Missing.
+- Analyse des tailles : APK 55,17 Mo, ZIP Windows 55,28 Mo, dossier Windows 133,10 Mo.
 
-Vérification Git finale avant clôture : 0 asset importable sans .meta suivi ; aucun fichier Library/Temp/Logs/UserSettings/Builds/Livrable versionné. Les seules AddComponent des scripts du jeu restent les Rigidbody/MeshCollider des morceaux EzySlice hérités. Aucun générateur de scène, UI ou effet au lancement ajouté. Aucun push effectué.
+## 18 novembre 2026 — essais et remise
 
-## 18 novembre 2026 — preuves physiques et rapport conforme au sujet
-
-- Tests reçus : Meta Quest 3, PCVR via Virtual Desktop et APK autonome. Benjamin confirme volume, écran de fin et haptique sur les deux ; gameplay, effets et retours menu observés dans les vidéos. Les limites (pas de FPS, pas de session longue) restent explicites.
-- Vidéos rangées sans modification dans docs/preuves/videos, hors Git. Treize captures/juxtapositions versionnées, avec horodatages, SHA256 des vidéos et script d'extraction reproductible. Logo vectoriel officiel Efrei Paris / Paris Panthéon-Assas Université ajouté avec provenance.
-- Rapport réécrit selon les cinq rubriques du sujet pédagogique, avec Benjamin JOANNARD comme seul auteur de la reprise individuelle ; paramètres des quatre effets, captures comparatives, builds/tests et analyse des tailles. La mise à jour Unity n'est plus un axe du rapport.
-- Nouveau PDF de quatre pages : rapport_part1_benjamin_joannard.pdf. L'ancien rapport.pdf était ouvert/verrouillé par un autre processus ; conservé sans le fermer ni l'écraser. README et outils pointent sur le nouveau document.
-- README, matrice des tests et compléments manuels actualisés. Restent les captures Android Studio APK Analyzer, les paramètres de test non relevés et l'accès enseignant à la branche publiée. Le relevé FPS est facultatif selon le sujet.
-- Cette étape ne modifie ni Assets, ni Packages, ni ProjectSettings, ni les exécutables. Pas de nouvelle compilation ou mesure casque par l'agent ; résultats de build existants : Windows 0 erreur/0 warning, Quest 0 erreur/2 recommandations OpenXR. Aucun push.
+- Essais sur Meta Quest 3 : PCVR via Virtual Desktop et APK autonome.
+- Même PC pour la compilation et le test PCVR : Intel i7-9700KF, RTX 2060 et 15,9 Gio RAM.
+- Vérification des sabres, du gameplay, des effets, du volume, de l'écran de fin et de l'haptique sur les deux builds.
+- Captures des parties, comparaisons d'effets et relevé des paramètres.
+- Rapport individuel avec logo Efrei Paris / Paris Panthéon-Assas Université.
+- Notice du projet et archive de remise réunissant Windows, Quest et rapport.
+- FPS non mesurés ; analyse Android Studio APK Analyzer et captures non réalisées.

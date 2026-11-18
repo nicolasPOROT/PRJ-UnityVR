@@ -1,10 +1,23 @@
-# Organisation retenue — correction Task 2
+# Organisation du projet
 
-Déplacements effectués par `AssetDatabase.MoveAsset` dans l'éditeur, hors Play :
+Les ressources importées et EzySlice sont regroupés sous **Assets/ThirdParty** :
 
-- `Assets/Imported_assets` → `Assets/ThirdParty/Imported_assets`.
-- `Assets/ezy-slice-master` → `Assets/ThirdParty/EzySlice`.
+- Assets/Imported_assets → Assets/ThirdParty/Imported_assets.
+- Assets/ezy-slice-master → Assets/ThirdParty/EzySlice.
 
-Les GUID et métadonnées sont conservés. Aucun asset supprimé. `Samples` reste au chemin conventionnel des imports de samples Unity et `TextMesh Pro` au chemin hérité ; aucune suppression ni réorganisation massive de ces dépendances. Les dossiers propres au jeu (Scripts, Scenes, Prefabs/Fruits, Prefabs/Bombs, Prefabs/Fx, Models, Materials, Sounds, Sprites, Settings, XR, XRI) restent stables.
+Les déplacements dans l'éditeur ont conservé les GUID et les références.
 
-Après déplacement : compilation réussie, audit des deux scènes et 16 prefabs sans Missing, smoke test logique de PlayScene réussi (spawn, score/combos, bombe/vies, retour menu). Geste EzySlice et casque restent à tester.
+| Dossier | Contenu |
+|---|---|
+| Scenes | MainMenu, PlayScene et TestScene |
+| Scripts | Gameplay et composants d'interface |
+| Prefabs/Fruits | Fruits et références des effets de coupe |
+| Prefabs/Bombs | Bombes et références des explosions |
+| Prefabs/Fx | Bases et variantes PCVR/Quest |
+| Prefabs/UI | Interface de volume |
+| Models, Materials, Sounds, Sprites | Ressources du jeu |
+| Settings, XR, XRI | Configuration du rendu, des builds et de XR |
+| ThirdParty | Ressources importées et EzySlice |
+| Samples | Actions XRI utilisées par le rig |
+
+MainMenu est la scène d'entrée (index 0), PlayScene la scène de jeu (index 1). TestScene est exclue des builds. Les deux scènes et les 17 prefabs du jeu ont été contrôlés sans Missing.
