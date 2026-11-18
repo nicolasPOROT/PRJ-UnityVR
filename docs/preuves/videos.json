@@ -1,0 +1,28 @@
+﻿{
+    "received":  "2026-11-18",
+    "tester":  "Benjamin JOANNARD",
+    "headset":  "Meta Quest 3",
+    "pcvrConnection":  "Virtual Desktop",
+    "videos":  [
+                   {
+                       "originalName":  "PCVR record.mp4",
+                       "path":  "docs/preuves/videos/pcvr.mp4",
+                       "bytes":  30721186,
+                       "sha256":  "3911D984B11817233B7BDD4EF88A399EF406E8308700592AFA7951746AE69CF0",
+                       "durationSeconds":  86.20875,
+                       "width":  1280,
+                       "height":  720,
+                       "recordingFrameRate":  "environ 30 images/s, pas une mesure des FPS du jeu"
+                   },
+                   {
+                       "originalName":  "APK in quest record.mp4",
+                       "path":  "docs/preuves/videos/quest_autonome.mp4",
+                       "bytes":  26833533,
+                       "sha256":  "926045AC0E96277FE371A84B88C3853C019AD731C14A134A5A66B32D7E70FC28",
+                       "durationSeconds":  74.967767,
+                       "width":  1280,
+                       "height":  720,
+                       "recordingFrameRate":  "environ 30 images/s, pas une mesure des FPS du jeu"
+                   }
+               ]
+}

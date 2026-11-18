@@ -65,6 +65,10 @@ sysinfo.txt
 *.unitypackage.meta
 *.app
 
+# Enregistrements et planches de travail locaux ; captures retenues versionnees.
+/docs/preuves/videos/
+/docs/preuves/planches/
+
 # Crashlytics generated file
 crashlytics-build.properties
 
