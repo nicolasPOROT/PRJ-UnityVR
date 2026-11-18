@@ -20,3 +20,7 @@ Justification : PCVR conserve le rendu hérité. Quest réduit les bursts, les p
 Vérification : quatre assets classés Variant par PrefabUtility ; audit hors Play des deux scènes et 16 prefabs sans Missing. Smoke test logique après configuration : +1 simple, +4 combo de deux, bombe −1 vie, retour MainMenu fonctionnel. Geste de coupe, effets perçus sur casque et sélection dans un APK final : NON TESTÉS.
 
 Recettes d'édition conservées hors Assets dans tools. Elles ne s'exécutent pas au lancement du jeu. Ne pas relancer Tune-QuestFx aveuglément : la réduction des bursts est multiplicative.
+
+## Observation sur les builds — 18 novembre 2026
+
+Vidéos reçues sur Meta Quest 3 : Windows via Virtual Desktop et APK autonome. Jus et explosion sont visibles sur les deux ; les comparaisons réelles sont dans preuves/captures et la section 2 du rapport. Matériaux/tailles identiques : l'apparence reste proche, mais les bursts Quest sont moins denses, les durées réduites de 25 % et la collision du jus désactivée. Les plafonds Max particles sont des limites, pas le nombre réellement émis à chaque coupe. Les prises de vue ne sont pas synchronisées ; elles ne démontrent pas un gain FPS. Les mentions NON TESTÉS ci-dessus décrivent la vérification initiale du 17 novembre.

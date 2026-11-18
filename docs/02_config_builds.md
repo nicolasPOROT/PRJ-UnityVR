@@ -64,3 +64,7 @@ Premier essai APK interrompu : le dialogue natif Unity « Unsupported Input Hand
 5. Builds et Livrable doivent être ignorés par Git. Aucun binaire de livraison ne doit être committé.
 
 Consigner ici les valeurs finales, la date, le commit source, le résultat du Build Report et les fichiers produits après réalisation. Une configuration lue dans les fichiers n'est pas un build validé.
+
+## Retour des tests physiques — 18 novembre 2026
+
+Les builds déjà produits ont été essayés par Benjamin JOANNARD sur Meta Quest 3 : PCVR via Virtual Desktop et APK autonome. Volume, écran final et haptique sont confirmés sur les deux. Les vidéos montrent tracking/sabres, coupe, score/vies, jus/explosion et retours menu ; voir 03_tests_builds.md et preuves/README.md. Aucun binaire n'a été reconstruit pour la mise à jour du rapport. Les paramètres de streaming/fréquence et le runtime OpenXR Windows actif ne sont pas relevés ; FPS non mesurés (facultatifs dans le sujet). Les mentions précédentes d'absence de tests décrivent l'état de production du 17 novembre.

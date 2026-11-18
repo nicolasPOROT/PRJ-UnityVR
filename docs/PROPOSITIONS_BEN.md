@@ -1,6 +1,6 @@
 # Améliorations proposées — validation avant implémentation
 
-Les choix A à G ont tous été validés par Benjamin le 17 novembre 2026, y compris le remplacement du retour immédiat par un écran de fin. Ils sont désormais implémentés, avec un commit dédié et des contrôles logiques dans l'éditeur ; les tests physiques restent à effectuer. Les estimations initiales ci-dessous sont conservées comme trace de la proposition. Les corrections obligatoires Tasks 2–3 ont également été réalisées.
+Les choix A à G ont tous été validés par Benjamin le 17 novembre 2026, y compris le remplacement du retour immédiat par un écran de fin. Ils sont implémentés, avec un commit dédié et des contrôles logiques dans l'éditeur. Le 18 novembre, les vidéos montrent les deux builds sur Quest 3 ; volume, écran final et haptique sont confirmés sur les deux par le testeur. Aucune mesure FPS physique n'a été réalisée (facultative dans le sujet). Les estimations initiales ci-dessous sont conservées comme trace de la proposition. Les corrections obligatoires Tasks 2–3 ont également été réalisées.
 
 | Choix | Amélioration Part 1 | Effort estimé | Périmètre |
 |---|---|---|---|

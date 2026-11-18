@@ -35,3 +35,12 @@
 | 4 | README, A_FAIRE_MANUELLEMENT, rapport.md/pdf, captures, livraison/SHA256 | PDF de 3 pages exporté ; archive commune de 185 fichiers vérifiée ; sources et métadonnées suivies, builds exclus | Commit final des documents | Membres/URL à confirmer, compléter résultats et captures casque |
 
 Vérification Git finale avant clôture : 0 asset importable sans .meta suivi ; aucun fichier Library/Temp/Logs/UserSettings/Builds/Livrable versionné. Les seules AddComponent des scripts du jeu restent les Rigidbody/MeshCollider des morceaux EzySlice hérités. Aucun générateur de scène, UI ou effet au lancement ajouté. Aucun push effectué.
+
+## 18 novembre 2026 — preuves physiques et rapport conforme au sujet
+
+- Tests reçus : Meta Quest 3, PCVR via Virtual Desktop et APK autonome. Benjamin confirme volume, écran de fin et haptique sur les deux ; gameplay, effets et retours menu observés dans les vidéos. Les limites (pas de FPS, pas de session longue) restent explicites.
+- Vidéos rangées sans modification dans docs/preuves/videos, hors Git. Treize captures/juxtapositions versionnées, avec horodatages, SHA256 des vidéos et script d'extraction reproductible. Logo vectoriel officiel Efrei Paris / Paris Panthéon-Assas Université ajouté avec provenance.
+- Rapport réécrit selon les cinq rubriques du sujet pédagogique, avec Benjamin JOANNARD comme seul auteur de la reprise individuelle ; paramètres des quatre effets, captures comparatives, builds/tests et analyse des tailles. La mise à jour Unity n'est plus un axe du rapport.
+- Nouveau PDF de quatre pages : rapport_part1_benjamin_joannard.pdf. L'ancien rapport.pdf était ouvert/verrouillé par un autre processus ; conservé sans le fermer ni l'écraser. README et outils pointent sur le nouveau document.
+- README, matrice des tests et compléments manuels actualisés. Restent les captures Android Studio APK Analyzer, les paramètres de test non relevés et l'accès enseignant à la branche publiée. Le relevé FPS est facultatif selon le sujet.
+- Cette étape ne modifie ni Assets, ni Packages, ni ProjectSettings, ni les exécutables. Pas de nouvelle compilation ou mesure casque par l'agent ; résultats de build existants : Windows 0 erreur/0 warning, Quest 0 erreur/2 recommandations OpenXR. Aucun push.

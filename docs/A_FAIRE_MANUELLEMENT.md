@@ -1,60 +1,39 @@
-# Vérifications manuelles et limites des tests
+﻿# Compléments avant remise
 
-État initial : aucun test Play Mode, casque, build ou mesure FPS réalisé pendant l'audit statique. Mettre à jour cette liste avec les résultats réellement obtenus.
+État au 18 novembre 2026 : les deux builds fonctionnent sur **Meta Quest 3**, avec **Virtual Desktop** pour le PCVR. Benjamin JOANNARD confirme volume, écran de fin et haptique sur les deux. Les captures réelles sont intégrées au rapport ; voir [résultats](03_tests_builds.md) et [provenance des vidéos](preuves/README.md). La Part 1 est individuelle : auteur **Benjamin JOANNARD**.
 
-État actuel : les deux builds sont produits, les cinq difficultés et le parcours logique complet ont été vérifiés dans l'éditeur. La copie de livraison Windows (184 fichiers) et l'APK sont conformes par SHA256. Restent les tests physiques ci-dessous, APK Analyzer et les captures correspondantes ; ne pas les marquer OK sur la seule base des tests automatisés.
+## 1. APK Analyzer — complément demandé dans le sujet
 
-## Contrôles dans l'éditeur avant les builds
+L'analyse ZIP et le Build Report sont disponibles ; **l'ouverture dans Android Studio et ses captures n'ont pas été réalisées**.
 
-- Ouvrir ce projet avec Unity **6000.0.58f1**. Ne pas utiliser 6000.5.0f1. Après import, attendre la fin de compilation et relever erreurs et warnings dans Window > General > Console.
-- Ouvrir MainMenu puis PlayScene hors Play : vérifier les composants et références des objets et des prefabs (Player, GameplayZone, canons, fruits, bombes, effets). Aucun Missing Script/Reference ne doit subsister. Sauvegarder chaque scène après modification.
-- Dans Project Settings > XR Plug-in Management > OpenXR > Project Validation, sélectionner successivement Standalone et Android ; corriger les erreurs, puis capturer les résultats.
-- Après chaque sous-étape : MainMenu, sélectionner chaque difficulté, vérifier en PlayScene les lancements de fruits/bombes, coupe EzySlice, score simple, combos, vies, fruit manqué selon difficulté et retour MainMenu à zéro vie. Une inspection du code ne valide pas ce parcours.
+1. Dans Android Studio, choisir **Build > Analyze APK**, puis `Builds/Android_Quest/FruitNinjaVR_Quest.apk` (ou sa copie identique dans Livrable/Quest).
+2. Vérifier le fichier : 57 851 307 octets, SHA256 `BEB89D96902D651B30F116E4FB14DF865CA2C7EEDD5E901E8D40C60E258053FC`.
+3. Prendre une vue d'ensemble avec le total, puis développer `assets/bin/Data` et `lib/arm64-v8a`. Faire apparaître `libil2cpp.so`, `libunity.so`, `classes.dex` et `resources.arsc` ; deux ou trois captures lisibles suffisent.
+4. Noter les intitulés exacts des colonnes et leurs valeurs : taille brute, taille compressée ou estimation de téléchargement ne sont pas interchangeables. Comparer aux mesures ZIP de [07_contenu_apk.md](07_contenu_apk.md).
+5. Enregistrer les captures dans docs/preuves/captures/ et les ajouter à la section 4 du rapport, puis réexporter le PDF. Les ressources Unity sont regroupées ; APK Analyzer ne présente pas chaque texture comme un fichier distinct.
 
-## Casque PCVR — NON TESTÉ
+## 2. Contexte des essais — précisions utiles si disponibles
 
-Amélioration D : confirmer une impulsion légère sur la bonne main à chaque coupe réussie (réglage initial 0,15 / 40 ms dans SliceHapticFeedback), aucune erreur si contrôleur sans support haptique. C : vérifier l'animation du score sans gêne de lecture.
+Noter le PC réellement utilisé pour le test PCVR (est-ce bien i7-9700KF / RTX 2060 / 15,9 Gio ?), le runtime OpenXR actif (VDXR ou SteamVR), la fréquence du Quest et les réglages Virtual Desktop (résolution/qualité et débit). Pour l'autonome : version système et fréquence si connues. Sinon conserver « non relevé » ; aucune valeur n'est supposée dans le rapport.
 
-F/G : tester le glissement du volume par rayon et sa conservation au redémarrage. Pour les mesures, sélectionner `Player/Main Camera/DebugFpsCanvas` (sous Camera Offset selon la hiérarchie), puis cocher Show Overlay dans FpsOverlay avant un build de test ; décocher pour la livraison. Le compteur est une moyenne des frames applicatives, pas une mesure GPU ni une validation du tracking.
+La stabilité prolongée, la chauffe, la latence et le bouton Rejouer utilisé physiquement restent des compléments possibles ; le rapport ne les déclare pas mesurés ou démontrés par la vidéo.
 
-E : tester physiquement les boutons Rejouer et Menu, vérifier que les canons et les sabres cessent d'affecter le score sur l'écran final. Le menu hérité sélectionne toujours les niveaux par découpe, les nouvelles UI utilisent les rayons/gâchettes.
+## 3. FPS — facultatif, pas nécessaire pour rendre un rapport honnête
 
-1. Renseigner modèle du casque, runtime OpenXR actif, CPU/GPU/RAM, connexion Link/Air Link, résolution et fréquence.
-2. Lancer le build Windows complet ; vérifier tracking tête/mains, sabres et actions des contrôleurs, accès au menu et lisibilité de l'UI.
-3. Rejouer le parcours gameplay ci-dessus ; vérifier jus/explosion PCVR, absence d'erreur dans Player.log et démarrage répété.
-4. Mesurer réellement les FPS avec un outil de profiling adapté et relever la méthode, la scène, la durée et les réglages. Ne pas confondre FPS de l'éditeur et FPS du casque.
+Le sujet autorise un relevé chiffré si une mesure a été faite. **On peut conserver « FPS non mesurés »**. Les vidéos autour de 30 images/s ne donnent pas la cadence du jeu. Le compteur existant est masqué dans les builds de livraison.
 
-### Protocole FPS à exécuter sur les players
+Pour effectuer un relevé simple si souhaité :
 
-1. Conserver les livrables Release existants. Dans Player.prefab, sélectionner Main Camera/DebugFpsCanvas et cocher Show Overlay ; produire un build de test séparé dans `Builds/Windows_PCVR_TestFPS/` ou `Builds/Android_Quest_TestFPS/`.
-2. Lancer ce player avec le casque réellement suivi. Après 30 s d'échauffement, jouer 60 s en Facile puis en Extrême, avec coupes et explosions ; relever la valeur affichée toutes les 10 s, ainsi que modèle du casque, fréquence, résolution et mode de connexion.
-3. Le compteur indique les FPS applicatifs du player, pas les performances du compositor ni les frames reprojetées. Pour CPU/GPU, faire un build de test Development avec Autoconnect Profiler, ouvrir Window > Analysis > Profiler, sélectionner le player connecté (USB/ADB pour Quest), enregistrer CPU Usage et GPU Usage si disponibles, sans Deep Profiling. Indiquer qu'un build Development et le profiling ont un coût.
-4. Noter minimum et moyenne des échantillons, méthode et durée dans 03_tests_builds.md ; ne rien extrapoler d'une valeur de l'éditeur. Décocher Show Overlay et Development Build après les tests ; les livrables fournis gardent l'overlay désactivé.
+1. Ouvrir Assets/Prefabs/Player.prefab. Sous Camera Offset/Main Camera/DebugFpsCanvas, sélectionner le composant **FpsOverlay** et cocher **Show Overlay**. Sauvegarder le prefab ; ne pas créer de nouvel objet.
+2. Produire un build de test séparé, par exemple Builds/Windows_PCVR_TestFPS/ ou Builds/Android_Quest_TestFPS/. Sur Quest, installer cet APK de test avec `adb install -r` ; il remplace l'installation actuelle si l'identifiant est identique. Conserver les fichiers Release de livraison.
+3. Jouer avec le casque : attendre 30 s, puis tester 60 s en Facile et 60 s en Extrême avec coupes/explosions. Relever le compteur toutes les 10 s, le casque, sa fréquence, les réglages et la connexion. Noter moyenne et minimum **des échantillons** ; ce ne sont pas les statistiques de toutes les frames.
+4. Ce compteur échantillonne les frames applicatives sur 0,5 s. Il ne mesure ni le temps GPU, ni la latence, ni les images reprojetées du compositor. Identifier la méthode dans le rapport.
+5. Décocher Show Overlay et sauvegarder le prefab après le test. Ne pas remplacer les livrables existants par inadvertance. Aucun nouveau build n'a été produit pour ce relevé à ce jour.
 
-## Quest autonome — NON TESTÉ
+## 4. Remise et accès aux sources
 
-Activer le mode développeur du casque, brancher USB, accepter l'autorisation de débogage, puis exécuter depuis la racine du dépôt (avec adb du SDK Unity dans PATH) :
+Vérifier l'accès enseignant au dépôt et publier la branche **Mini-projet-Ben** avant remise si elle n'est pas encore distante. **Aucun push n'est effectué sans demande explicite.** Conserver l'archive Livrable/FruitNinjaVR_Part1.zip avec Windows complet et APK autonome.
 
-```powershell
-adb devices
-adb install -r "Builds/Android_Quest/FruitNinjaVR_Quest.apk"
-adb logcat -s Unity
-```
+Le PDF actuel est [rapport_part1_benjamin_joannard.pdf](rapport_part1_benjamin_joannard.pdf). L'ancien rapport.pdf reste une version antérieure. Les vidéos locales ont été rangées dans docs/preuves/videos/ et sont ignorées par Git ; les captures sélectionnées sont versionnées.
 
-L'APK doit d'abord avoir été produit ; ces commandes n'ont pas été exécutées. Lancer l'application depuis les sources inconnues. Relever modèle Quest, version système, fréquence et réglages graphiques. Tester tracking, sabres, gameplay, effets Quest, UI et relance. Mesurer les FPS sur casque, relever chauffe et stabilité pendant une session représentative.
-
-## Analyse, captures et rapport — NON RÉALISÉS
-
-Captures déjà disponibles : `docs/captures/menu_editeur.png` et `gameover_editeur.png`, issues d'une caméra Unity dans un scénario automatisé, sans tracking physique. Elles ne remplacent pas les captures de rendu au casque. Les captures hors Play de diagnostic montrent l'état avant correction des masquages ; ne pas les utiliser comme preuve de l'interface finale.
-
-- Android Studio : Build > Analyze APK, choisir l'APK final ; relever taille totale/compressée et contributions assets/bin/Data, lib/arm64-v8a/libil2cpp.so, libunity.so, classes.dex, resources.arsc. Capturer les vues et consigner la version exacte du build analysé.
-- Capturer les deux scènes, les quatre prefabs d'effets avec Inspector, les configurations OpenXR/Android, les résultats de validation et les builds en fonctionnement sur chaque casque.
-
-Pour les captures PCVR : casque connecté, afficher le miroir du player sur le PC, utiliser Win+Maj+S et enregistrer `docs/captures/pcvr_miroir_casque.png`. Pour Quest, essayer les commandes ci-dessous après avoir affiché le jeu dans le casque ; vérifier que le fichier représente bien le jeu (les surfaces VR peuvent ne pas apparaître dans une capture Android standard). Si la capture est noire ou incomplète, utiliser la fonction de capture du casque et exporter le fichier manuellement. Ce résultat reste NON RÉALISÉ ici.
-
-```powershell
-adb shell screencap -p /sdcard/FruitNinjaVR_Quest.png
-adb pull /sdcard/FruitNinjaVR_Quest.png docs/captures/quest_casque.png
-```
-- Confirmer les membres Fabio Malta, Nicolas Porot, Matéo Biaut, Benjamin Joannard et l'URL du dépôt rendu avant finalisation du README/rapport.
-- Toute optimisation (ASTC, imports, retrait d'assets/Samples) attend une validation explicite ; aucune suppression autorisée à ce stade.
+Les optimisations supplémentaires (ASTC, imports, retrait de Samples/skybox) attendent une validation explicite. Aucune suppression d'asset ni modification du gameplay n'a été faite pour cette mise à jour documentaire.

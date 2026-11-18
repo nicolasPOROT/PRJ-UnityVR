@@ -1,6 +1,6 @@
 ﻿# Releve automatise du contenu ZIP de l'APK
 
-Analyse de la structure ZIP uniquement ; Android Studio APK Analyzer et execution sur casque NON REALISES.
+Analyse de la structure ZIP uniquement ; Android Studio APK Analyzer NON REALISE. Mise a jour du 18 novembre : execution autonome sur Quest 3 confirmee par Benjamin JOANNARD, videos et captures disponibles dans preuves/README.md.
 
 SHA256 : `BEB89D96902D651B30F116E4FB14DF865CA2C7EEDD5E901E8D40C60E258053FC`
 

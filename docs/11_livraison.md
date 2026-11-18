@@ -1,6 +1,6 @@
 ﻿# Livraison et integrite
 
-Etat fonctionnel construit : commit 4fdc8c8 ; serialisation Unity conservee dans 498ebf5. Tests casque et APK Analyzer NON REALISES.
+Etat fonctionnel construit : commit 4fdc8c8 ; serialisation Unity conservee dans 498ebf5. Au 18 novembre : tests casque confirmes sur Quest 3 (PCVR via Virtual Desktop et APK autonome), videos et captures recues ; APK Analyzer NON REALISE. Aucun binaire reconstruit pour cette mise a jour documentaire.
 
 Windows : 184 fichiers copies et compares par SHA256 ; APK copie et compare par SHA256. Archive commune : 185 fichiers, plateformes Windows_PCVR et Quest presentes.
 
